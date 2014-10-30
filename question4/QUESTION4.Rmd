@@ -1,0 +1,60 @@
+Databreaches
+====================
+
+
+Reading the data through secure URL
+```{r}
+library(RCurl)
+library(foreign)
+# Reading the data
+databreaches <- getURL("https://raw.githubusercontent.com/jrwolf/IT497/master/databreaches.csv",header=TRUE)
+databreaches
+```
+
+## writing the csv file
+```{r}
+write.csv(databreaches, file = "databreaches.csv")
+
+```
+
+## Reading the csv file
+```{r}
+databreaches1<-read.csv(file="databreaches.csv",header=TRUE,skip=23)
+databreaches1
+```
+
+
+## Selecting records prior to 2008.
+```{r}
+databreaches2<-databreaches1[1:152 ,c(2,5)]
+databreaches2
+```
+
+## cleaning the rows containing inappropriate data
+```{r}
+databreaches3<-databreaches2[c(1:20,25:43,51:53,73:98,101:113,130:137,140:142,145:147,151:152) ,]
+databreaches3
+```
+
+## Plotting the Graph{databreaches by year}
+```{r ggplot2ex}
+library(ggplot2)
+ggplot(databreaches3, aes(x=YEAR, y=RECORDS)) + geom_bar(stat="identity")
+```
+
+## Cleaning the data for another graph
+```{r}
+databreaches4<-databreaches1[1:152,c(2,4:5)]
+databreaches4
+```
+
+## Plotting the graph{databreaches by method}
+```{r ggplot2,out.width = '1000px', dpi=200,}
+library(ggplot2)
+ggplot(databreaches4, aes(x=METHOD, y=YEAR)) + geom_bar(stat="identity")
+```
+
+
+
+
+

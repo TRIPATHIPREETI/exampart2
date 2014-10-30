@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>Databreaches</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<h1>Databreaches</h1>
+
+<p>Reading the data through secure URL</p>
+
+<pre><code class="r">library(RCurl)
+</code></pre>
+
+<pre><code>## Loading required package: bitops
+</code></pre>
+
+<pre><code class="r">library(foreign)
+# Reading the data
+databreaches &lt;- getURL(&quot;https://raw.githubusercontent.com/jrwolf/IT497/master/databreaches.csv&quot;,header=TRUE)
+databreaches
+</code></pre>
+
+<pre><code>## [1] &quot;HTTP/1.1 200 OK\r\nDate: Wed, 29 Oct 2014 11:50:30 GMT\r\nServer: Apache\r\nAccess-Control-Allow-Origin: https://render.githubusercontent.com\r\nContent-Security-Policy: default-src &#39;none&#39;\r\nX-XSS-Protection: 1; mode=block\r\nX-Frame-Options: deny\r\nX-Content-Type-Options: nosniff\r\nStrict-Transport-Security: max-age=31536000\r\nETag: \&quot;fa090a97838613fc799f59c122b0077bf9998d0b\&quot;\r\nContent-Type: text/plain; charset=utf-8\r\nCache-Control: max-age=300\r\nContent-Length: 9637\r\nAccept-Ranges: bytes\r\nVia: 1.1 varnish\r\nX-Served-By: cache-ord1720-ORD\r\nX-Cache: HIT\r\nX-Cache-Hits: 1\r\nVary: Authorization,Accept-Encoding\r\nExpires: Wed, 29 Oct 2014 11:55:30 GMT\r\nSource-Age: 300\r\n\r\nORG,YEAR,ORGTYPE,METHOD,RECORDS\r\nJP Morgan Chase,2014,financial,hacked,76000000\r\nGmail,2014,web,hacked,5000000\r\nHome Depot,2014,retail,hacked,56000000\r\nMozilla,2014,web,poor security,760000\r\nCommunity Health Services,2014,healthcare,hacked,4500000\r\nNew York Taxis,2013,transport,poor security,52000\r\nDominios Pizzas (France),2013,web,hacked,600000\r\nMacRumours.com,2013,web,hacked,860000\r\nLexisNexis,2013,tech,hacked,1000000\r\nAOL,2013,web,hacked,24000000\r\nKorea Credit Bureau,2013,financial,inside job,20000000\r\nTarget,2013,retail,hacked,70000000\r\nEbay,2013,web,hacked,145000000\r\nAdobe,2013,tech,hacked,152000000\r\nNeiman Marcus,2013,retail,hacked,1100100\r\nEuropean Central Bank,2013,financial,hacked,4000000\r\nUPS,2013,retail,hacked,4000000\r\nNASDAQ,2013,financial,hacked,500000\r\nAdvocate Medical Group,2012,healthcare,lost / stolen media,4000000\r\nSnapChat,2012,\&quot;web, tech\&quot;,hacked,4700000\r\nSouth Africa police,2012,government,hacked ,16000\r\n\&quot;Crescent Health Inc., Walgreens\&quot;,2012,healthcare,lost / stolen computer,100000\r\nFlorida Courts,2012,government,lost / stolen computer,100000\r\nFlorida Department of Juvenile Justice,2012,government,lost / stolen computer,100000\r\nCentral Hudson Gas &amp; Electric,2012,energy,hacked,110000\r\nKirkwood Community College,2012,academic,hacked,125000\r\nCitigroup,2012,financial,poor security,150000\r\nWashington State court system,2012,government,hacked,160000\r\nTerraCom &amp; YourTel,2012,telecoms,accidentally published,170000\r\nNintendo,2012,gaming,hacked,239326\r\nTwitter,2012,web,hacked ,250000\r\nApple,2012,tech,hacked,275000\r\nScribd,2012,web,hacked,500000\r\nDrupal,2012,web,hacked,1000000\r\nDun &amp; Bradstreet,2012,tech,hacked,1000000\r\nKroll Background America,2012,tech,hacked,1000000\r\nKissinger Cables,2012,government,inside job,1700000\r\nUbuntu,2012,tech,hacked,2000000\r\nVodafone,2012,telecoms,inside job,2000000\r\nFacebook,2012,web,accidentally published,6000000\r\nYahoo Japan,2012,\&quot;tech, web\&quot;,hacked,22000000\r\nEvernote,2012,web,hacked,50000000\r\nLiving Social,2012,web,hacked,50000000\r\nUbiSoft,2012,gaming,hacked,58000000\r\nOVH,2012,web,hacked,500000\r\nMilitarysingles.com,2011,\&quot;web, military\&quot;,accidentally published,163792\r\nEmory Healthcare,2011,healthcare,poor security,315000\r\nFormspring,2011,web,accidentally published,420000\r\nYahoo Voices,2011,\&quot;tech, web\&quot;,hacked,450000\r\nMedicaid,2011,\&quot;government, healthcare\&quot;,hacked,780000\r\nCalifornia Department of Child Support Services,2011,government,lost / stolen media ,800000\r\nNew York State Electric &amp; Gas,2011,energy,inside job,1800000\r\nThree Iranian banks,2011,financial,hacked,3000000\r\nSouth Carolina Government,2011,healthcare,inside job,228435\r\nOffice of the Texas Attorney General,2011,government,accidentally published,6500000\r\nGlobal Payments,2011,financial,hacked,1500000\r\nGamigo,2011,web,hacked,8000000\r\n\&quot;LinkedIn, eHarmony, Last.fm\&quot;,2011,web,accidentally published,8000000\r\nKT Corp.,2011,telecoms,hacked,8700000\r\nGreek government,2011,government,hacked,9000000\r\nZappos,2011,web,hacked,24000000\r\nMassive American business hack,2011,financial,hacked,160000000\r\nDropbox,2011,web,hacked,30000\r\n\&quot;\&quot;\&quot;Apple\&quot;\&quot;\&quot;,2011,\&quot;tech, retail\&quot;,accidentally published,12367232\r\nBlizzard,2011,gaming,hacked,14000000\r\nMorgan Stanley Smith Barney,2010,financial,lost / stolen media ,34000\r\nUS Army,2010,military,accidentally published,50000\r\nWriterspace.com,2010,web,hacked,62000\r\nUniversity of Wisconsin - Milwaukee,2010,academic,hacked,73000\r\nMemorial Healthcare System,2010,healthcare,lost / stolen media,102153\r\nUS Law Enforcement,2010,government,accidentally published,123461\r\nAccendo Insurance Co. ,2010,healthcare,poor security,175350\r\nSan Francisco Public Utilities Commission ,2010,government,hacked,180000\r\nBethesda Game Studios,2010,gaming,hacked,200000\r\nRestaurant Depot,2010,retail,hacked,200000\r\nMassachusetts Government,2010,government,poor security,210000\r\nHonda Canada,2010,retail,poor security,283000\r\nSouthern California Medical-Legal Consultants,2010,healthcare,hacked,300000\r\nCitigroup,2010,financial,hacked,360083\r\nSpartanburg Regional Healthcare System,2010,healthcare,lost / stolen computer,400000\r\nEisenhower Medical Center,2010,healthcare,lost / stolen computer,514330\r\nStratfor,2010,military,accidentally published,935000\r\nOregon Department of Motor Vehicles,2010,government,poor security,1000000\r\nSony Pictures,2010,web,hacked,1000000\r\nNemours Foundation,2010,healthcare,lost / stolen media ,1055489\r\nWashington Post,2010,media,hacked,1270000\r\nSega,2010,gaming,hacked,1290755\r\nCountrywide Financial Corp,2010,financial,inside job,2500000\r\nState of Texas,2010,government,accidentally published,3500000\r\nSutter Medical Foundation,2010,healthcare,lost / stolen computer,4243434\r\nTricare,2010,\&quot;military, healthcare\&quot;,lost / stolen computer,4901432\r\nChina Software Developer Network,2010,web,hacked,6000000\r\nNHS,2010,healthcare,lost / stolen media ,8300000\r\n178.com,2010,web,hacked,10000000\r\nNexon Korea Corp,2010,web,hacked,13200000\r\nSony Online Entertainment,2010,gaming,hacked,24600000\r\nTianya,2010,web,hacked,28000000\r\nSteam,2010,web,hacked,35000000\r\nSony PSN,2010,gaming,hacked,77000000\r\nHealth Net - IBM,2010,healthcare,lost / stolen media ,1900000\r\nYale University,2009,academic,accidentally published,43000\r\nColorado government,2009,healthcare,lost / stolen computer,105470\r\nAT&amp;T,2009,telecoms,hacked,114000\r\nLincoln Medical &amp; Mental Health Center,2009,healthcare,lost / stolen media ,130495\r\n\&quot;Ankle &amp; foot Center of Tampa Bay, Inc.\&quot;,2009,healthcare,hacked,156000\r\n\&quot;Emergency Healthcare Physicians, Ltd.\&quot;,2009,healthcare,lost / stolen media,180111\r\n\&quot;Seacoast Radiology, PA\&quot;,2009,healthcare,hacked,231400\r\nEmbassy Cables,2009,government,inside job,251000\r\nUS Military,2009,military,inside job,260000\r\nClassified Iraq War documents,2009,government,inside job,392000\r\n\&quot;Triple-S Salud, Inc.\&quot;,2009,healthcare,lost / stolen media,398000\r\nUS Federal Reserve Bank of Cleveland,2009,financial,hacked,400000\r\nPuerto Rico Department of Health,2009,healthcare,hacked,515000\r\nOhio State University,2009,academic,hacked,760000\r\n\&quot;South Shore Hospital, Massachusetts\&quot;,2009,healthcare,lost / stolen media ,800000\r\nGawker.com,2009,web,hacked,1500000\r\nNew York City Health &amp; Hospitals Corp.,2009,healthcare,lost / stolen media ,1700000\r\nBetfair,2009,web,hacked,2300000\r\nJP Morgan Chase,2009,financial,lost / stolen media ,2600000\r\nEducational Credit Management Corp,2009,financial,lost / stolen media,3300000\r\nUS Dept of Defense,2008,military,lost / stolen media ,72000\r\nUS National Guard,2008,military,lost / stolen computer,131000\r\nUniversity of California Berkeley,2008,academic,hacked,160000\r\n\&quot;Affinity Health Plan, Inc.\&quot;,2008,healthcare,lost / stolen media ,344579\r\nVirginia Prescription Monitoring Program,2008,healthcare,hacked,531400\r\nNetwork Solutions,2008,tech,hacked,573000\r\nBlue Cross Blue Shield of Tennessee,2008,healthcare,lost / stolen media ,1023209\r\n\&quot;AvMed, Inc.\&quot;,2008,healthcare,lost / stolen computer,1220000\r\nHealth Net ,2008,healthcare,lost / stolen media ,1500000\r\nCheckFree Corporation,2008,financial,hacked,5000000\r\nVirginia Dept. Of Health,2008,\&quot;government, healthcare\&quot;,hacked,8257378\r\nRockYou!,2008,\&quot;web, gaming\&quot;,hacked,32000000\r\nUS Military,2008,military,lost / stolen media ,76000000\r\nHeartland,2008,financial,hacked,130000000\r\nService Personnel and Veterans Agency (UK),2007,government,lost / stolen media,50000\r\nStanford University,2007,academic,lost / stolen computer,72000\r\nUK Home Office,2007,government,lost / stolen media,84000\r\nStarbucks,2007,retail,lost / stolen computer,97000\r\nAT&amp;T,2007,telecoms,lost / stolen computer,113000\r\nRBS Worldpay,2007,financial,hacked,1500000\r\nJefferson County,2007,government,accidentally published,1600000\r\nUK Ministry of Defence,2007,government,lost / stolen media,1700000\r\nUniversity of Miami,2007,academic,lost / stolen computer,2100000\r\nUniversity of Utah Hospitals &amp; Clinics,2007,academic,lost / stolen media,2200000\r\nNorwegian Tax Authorities,2007,government,accidentally published,3950000\r\nData Processors International,2007,financial,hacked,5000000\r\nChile Ministry Of Education,2007,government,accidentally published,6000000\r\nGS Caltex,2007,energy,inside job,11100000\r\nBNY Mellon Shareowner Services,2007,financial,lost / stolen media ,12500000\r\nAuction.co.kr,2007,web,hacked,18000000\r\nTexas Lottery,2006,government,inside job,89000\r\nCity and Hackney Teaching Primary Care Trust,2006,government,lost / stolen media,160000\r\nGap Inc,2006,retail,lost / stolen computer,800000\r\nCompass Bank,2006,financial,inside job,1000000\r\nMonster.com,2006,web,hacked,1600000\r\nDriving Standards Agency,2006,government,lost / stolen media,3000000\r\n\&quot;Driving Standards Agency,\&quot;,2006,government,lost / stolen media,3000000\r\nHannaford Brothers Supermarket Chain,2006,retail,hacked,4200000\r\nTD Ameritrade,2006,financial,hacked,6300000\r\nFidelity National Information Services,2006,financial,inside job,8500000\r\nDai Nippon Printing,2006,retail,inside job,8637405\r\nUK Revenue &amp; Customs,2006,government,lost / stolen media ,25000000\r\nTK / TJ Maxx,2006,retail,hacked,94000000\r\nHewlett Packard,2005,\&quot;tech, retail\&quot;,lost / stolen media,200000\r\nCountrywide Financial Corp,2005,financial,inside job,2600000\r\nKDDI,2005,telecoms,hacked,4000000\r\n\&quot;T-Mobile, Deutsche Telecom\&quot;,2005,telecoms,lost / stolen media ,17000000\r\nAOL,2005,web,accidentally published,20000000\r\nUS Dept of Vet Affairs,2005,\&quot;government, military\&quot;,lost / stolen computer,26500000\r\nAutomatic Data Processing,2004,financial,poor security,125000\r\nAmeritrade Inc.,2004,financial,lost / stolen media,200000\r\nCitigroup,2004,financial,lost / stolen media ,3900000\r\nCardsystems Solutions Inc. ,2004,financial,hacked,40000000\r\nAOL,2003,web,\&quot;inside job, hacked\&quot;,92000000\r\n\r\n&quot;
+</code></pre>
+
+<h2>writing the csv file</h2>
+
+<pre><code class="r">write.csv(databreaches, file = &quot;databreaches.csv&quot;)
+</code></pre>
+
+<h2>Reading the csv file</h2>
+
+<pre><code class="r">databreaches1&lt;-read.csv(file=&quot;databreaches.csv&quot;,header=TRUE,skip=23)
+</code></pre>
+
+<pre><code>## Warning: EOF within quoted string
+</code></pre>
+
+<pre><code class="r">databreaches1
+</code></pre>
+
+<pre><code>##                                                 ORG              YEAR
+## 1                                   JP Morgan Chase              2014
+## 2                                             Gmail              2014
+## 3                                        Home Depot              2014
+## 4                                           Mozilla              2014
+## 5                         Community Health Services              2014
+## 6                                    New York Taxis              2013
+## 7                          Dominios Pizzas (France)              2013
+## 8                                    MacRumours.com              2013
+## 9                                        LexisNexis              2013
+## 10                                              AOL              2013
+## 11                              Korea Credit Bureau              2013
+## 12                                           Target              2013
+## 13                                             Ebay              2013
+## 14                                            Adobe              2013
+## 15                                    Neiman Marcus              2013
+## 16                            European Central Bank              2013
+## 17                                              UPS              2013
+## 18                                           NASDAQ              2013
+## 19                           Advocate Medical Group              2012
+## 20                                         SnapChat              2012
+## 21                                          4700000                  
+## 22                              South Africa police              2012
+## 23                             Crescent Health Inc.         Walgreens
+## 24                                           100000                  
+## 25                                   Florida Courts              2012
+## 26           Florida Department of Juvenile Justice              2012
+## 27                    Central Hudson Gas &amp; Electric              2012
+## 28                       Kirkwood Community College              2012
+## 29                                        Citigroup              2012
+## 30                    Washington State court system              2012
+## 31                               TerraCom &amp; YourTel              2012
+## 32                                         Nintendo              2012
+## 33                                          Twitter              2012
+## 34                                            Apple              2012
+## 35                                           Scribd              2012
+## 36                                           Drupal              2012
+## 37                                 Dun &amp; Bradstreet              2012
+## 38                         Kroll Background America              2012
+## 39                                 Kissinger Cables              2012
+## 40                                           Ubuntu              2012
+## 41                                         Vodafone              2012
+## 42                                         Facebook              2012
+## 43                                      Yahoo Japan              2012
+## 44                                         22000000                  
+## 45                                         Evernote              2012
+## 46                                    Living Social              2012
+## 47                                          UbiSoft              2012
+## 48                                              OVH              2012
+## 49                              Militarysingles.com              2011
+## 50                                           163792                  
+## 51                                 Emory Healthcare              2011
+## 52                                       Formspring              2011
+## 53                                     Yahoo Voices              2011
+## 54                                           450000                  
+## 55                                         Medicaid              2011
+## 56                                           780000                  
+## 57  California Department of Child Support Services              2011
+## 58                    New York State Electric &amp; Gas              2011
+## 59                              Three Iranian banks              2011
+## 60                        South Carolina Government              2011
+## 61             Office of the Texas Attorney General              2011
+## 62                                  Global Payments              2011
+## 63                                           Gamigo              2011
+## 64                                         LinkedIn          eHarmony
+## 65                           accidentally published           8000000
+## 66                                         KT Corp.              2011
+## 67                                 Greek government              2011
+## 68                                           Zappos              2011
+## 69                   Massive American business hack              2011
+## 70                                          Dropbox              2011
+## 71                                        &quot;&quot;Apple&quot;&quot;              2011
+## 72                                         12367232                  
+## 73                                         Blizzard              2011
+## 74                      Morgan Stanley Smith Barney              2010
+## 75                                          US Army              2010
+## 76                                  Writerspace.com              2010
+## 77              University of Wisconsin - Milwaukee              2010
+## 78                       Memorial Healthcare System              2010
+## 79                               US Law Enforcement              2010
+## 80                           Accendo Insurance Co.               2010
+## 81       San Francisco Public Utilities Commission               2010
+## 82                            Bethesda Game Studios              2010
+## 83                                 Restaurant Depot              2010
+## 84                         Massachusetts Government              2010
+## 85                                     Honda Canada              2010
+## 86    Southern California Medical-Legal Consultants              2010
+## 87                                        Citigroup              2010
+## 88           Spartanburg Regional Healthcare System              2010
+## 89                        Eisenhower Medical Center              2010
+## 90                                         Stratfor              2010
+## 91              Oregon Department of Motor Vehicles              2010
+## 92                                    Sony Pictures              2010
+## 93                               Nemours Foundation              2010
+## 94                                  Washington Post              2010
+## 95                                             Sega              2010
+## 96                       Countrywide Financial Corp              2010
+## 97                                   State of Texas              2010
+## 98                        Sutter Medical Foundation              2010
+## 99                                          Tricare              2010
+## 100                                         4901432                  
+## 101                China Software Developer Network              2010
+## 102                                             NHS              2010
+## 103                                         178.com              2010
+## 104                                Nexon Korea Corp              2010
+## 105                       Sony Online Entertainment              2010
+## 106                                          Tianya              2010
+## 107                                           Steam              2010
+## 108                                        Sony PSN              2010
+## 109                                Health Net - IBM              2010
+## 110                                 Yale University              2009
+## 111                             Colorado government              2009
+## 112                                            AT&amp;T              2009
+## 113          Lincoln Medical &amp; Mental Health Center              2009
+## 114                Ankle &amp; foot Center of Tampa Bay              Inc.
+## 115                                          156000                  
+## 116                 Emergency Healthcare Physicians              Ltd.
+## 117                                          180111                  
+## 118                              Seacoast Radiology                PA
+## 119                                          231400                  
+## 120                                  Embassy Cables              2009
+## 121                                     US Military              2009
+## 122                   Classified Iraq War documents              2009
+## 123                                  Triple-S Salud              Inc.
+## 124                                          398000                  
+## 125            US Federal Reserve Bank of Cleveland              2009
+## 126                Puerto Rico Department of Health              2009
+## 127                           Ohio State University              2009
+## 128                            South Shore Hospital     Massachusetts
+## 129                                          800000                  
+## 130                                      Gawker.com              2009
+## 131          New York City Health &amp; Hospitals Corp.              2009
+## 132                                         Betfair              2009
+## 133                                 JP Morgan Chase              2009
+## 134              Educational Credit Management Corp              2009
+## 135                              US Dept of Defense              2008
+## 136                               US National Guard              2008
+## 137               University of California Berkeley              2008
+## 138                            Affinity Health Plan              Inc.
+## 139                                          344579                  
+## 140        Virginia Prescription Monitoring Program              2008
+## 141                               Network Solutions              2008
+## 142             Blue Cross Blue Shield of Tennessee              2008
+## 143                                           AvMed              Inc.
+## 144                                         1220000                  
+## 145                                     Health Net               2008
+## 146                           CheckFree Corporation              2008
+## 147                        Virginia Dept. Of Health              2008
+## 148                                         8257378                  
+## 149                                        RockYou!              2008
+## 150                                        32000000                  
+## 151                                     US Military              2008
+## 152                                       Heartland              2008
+## 153      Service Personnel and Veterans Agency (UK)              2007
+## 154                             Stanford University              2007
+## 155                                  UK Home Office              2007
+## 156                                       Starbucks              2007
+## 157                                            AT&amp;T              2007
+## 158                                    RBS Worldpay              2007
+## 159                                Jefferson County              2007
+## 160                          UK Ministry of Defence              2007
+## 161                             University of Miami              2007
+## 162          University of Utah Hospitals &amp; Clinics              2007
+## 163                       Norwegian Tax Authorities              2007
+## 164                   Data Processors International              2007
+## 165                     Chile Ministry Of Education              2007
+## 166                                       GS Caltex              2007
+## 167                  BNY Mellon Shareowner Services              2007
+## 168                                   Auction.co.kr              2007
+## 169                                   Texas Lottery              2006
+## 170    City and Hackney Teaching Primary Care Trust              2006
+## 171                                         Gap Inc              2006
+## 172                                    Compass Bank              2006
+## 173                                     Monster.com              2006
+## 174                        Driving Standards Agency              2006
+## 175                        Driving Standards Agency                  
+## 176                                         3000000                  
+## 177            Hannaford Brothers Supermarket Chain              2006
+## 178                                   TD Ameritrade              2006
+## 179          Fidelity National Information Services              2006
+## 180                             Dai Nippon Printing              2006
+## 181                            UK Revenue &amp; Customs              2006
+## 182                                    TK / TJ Maxx              2006
+## 183                                 Hewlett Packard              2005
+## 184                                          200000                  
+## 185                      Countrywide Financial Corp              2005
+## 186                                            KDDI              2005
+## 187                                        T-Mobile  Deutsche Telecom
+## 188                                        17000000                  
+## 189                                             AOL              2005
+## 190                          US Dept of Vet Affairs              2005
+## 191                                        26500000                  
+## 192                       Automatic Data Processing              2004
+## 193                                 Ameritrade Inc.              2004
+## 194                                       Citigroup              2004
+## 195                     Cardsystems Solutions Inc.               2004
+## 196                                             AOL              2003
+## 197                                        92000000                  
+## 198                                              \n                  
+##        ORGTYPE                 METHOD                RECORDS
+## 1    financial                 hacked               76000000
+## 2          web                 hacked                5000000
+## 3       retail                 hacked               56000000
+## 4          web          poor security                 760000
+## 5   healthcare                 hacked                4500000
+## 6    transport          poor security                  52000
+## 7          web                 hacked                 600000
+## 8          web                 hacked                 860000
+## 9         tech                 hacked                1000000
+## 10         web                 hacked               24000000
+## 11   financial             inside job               20000000
+## 12      retail                 hacked               70000000
+## 13         web                 hacked              145000000
+## 14        tech                 hacked              152000000
+## 15      retail                 hacked                1100100
+## 16   financial                 hacked                4000000
+## 17      retail                 hacked                4000000
+## 18   financial                 hacked                 500000
+## 19  healthcare    lost / stolen media                4000000
+## 20         web                   tech                 hacked
+## 21                                                          
+## 22  government                hacked                   16000
+## 23        2012             healthcare lost / stolen computer
+## 24                                                          
+## 25  government lost / stolen computer                 100000
+## 26  government lost / stolen computer                 100000
+## 27      energy                 hacked                 110000
+## 28    academic                 hacked                 125000
+## 29   financial          poor security                 150000
+## 30  government                 hacked                 160000
+## 31    telecoms accidentally published                 170000
+## 32      gaming                 hacked                 239326
+## 33         web                hacked                  250000
+## 34        tech                 hacked                 275000
+## 35         web                 hacked                 500000
+## 36         web                 hacked                1000000
+## 37        tech                 hacked                1000000
+## 38        tech                 hacked                1000000
+## 39  government             inside job                1700000
+## 40        tech                 hacked                2000000
+## 41    telecoms             inside job                2000000
+## 42         web accidentally published                6000000
+## 43        tech                    web                 hacked
+## 44                                                          
+## 45         web                 hacked               50000000
+## 46         web                 hacked               50000000
+## 47      gaming                 hacked               58000000
+## 48         web                 hacked                 500000
+## 49         web               military accidentally published
+## 50                                                          
+## 51  healthcare          poor security                 315000
+## 52         web accidentally published                 420000
+## 53        tech                    web                 hacked
+## 54                                                          
+## 55  government             healthcare                 hacked
+## 56                                                          
+## 57  government   lost / stolen media                  800000
+## 58      energy             inside job                1800000
+## 59   financial                 hacked                3000000
+## 60  healthcare             inside job                 228435
+## 61  government accidentally published                6500000
+## 62   financial                 hacked                1500000
+## 63         web                 hacked                8000000
+## 64     Last.fm                   2011                    web
+## 65                                                          
+## 66    telecoms                 hacked                8700000
+## 67  government                 hacked                9000000
+## 68         web                 hacked               24000000
+## 69   financial                 hacked              160000000
+## 70         web                 hacked                  30000
+## 71        tech                 retail accidentally published
+## 72                                                          
+## 73      gaming                 hacked               14000000
+## 74   financial   lost / stolen media                   34000
+## 75    military accidentally published                  50000
+## 76         web                 hacked                  62000
+## 77    academic                 hacked                  73000
+## 78  healthcare    lost / stolen media                 102153
+## 79  government accidentally published                 123461
+## 80  healthcare          poor security                 175350
+## 81  government                 hacked                 180000
+## 82      gaming                 hacked                 200000
+## 83      retail                 hacked                 200000
+## 84  government          poor security                 210000
+## 85      retail          poor security                 283000
+## 86  healthcare                 hacked                 300000
+## 87   financial                 hacked                 360083
+## 88  healthcare lost / stolen computer                 400000
+## 89  healthcare lost / stolen computer                 514330
+## 90    military accidentally published                 935000
+## 91  government          poor security                1000000
+## 92         web                 hacked                1000000
+## 93  healthcare   lost / stolen media                 1055489
+## 94       media                 hacked                1270000
+## 95      gaming                 hacked                1290755
+## 96   financial             inside job                2500000
+## 97  government accidentally published                3500000
+## 98  healthcare lost / stolen computer                4243434
+## 99    military             healthcare lost / stolen computer
+## 100                                                         
+## 101        web                 hacked                6000000
+## 102 healthcare   lost / stolen media                 8300000
+## 103        web                 hacked               10000000
+## 104        web                 hacked               13200000
+## 105     gaming                 hacked               24600000
+## 106        web                 hacked               28000000
+## 107        web                 hacked               35000000
+## 108     gaming                 hacked               77000000
+## 109 healthcare   lost / stolen media                 1900000
+## 110   academic accidentally published                  43000
+## 111 healthcare lost / stolen computer                 105470
+## 112   telecoms                 hacked                 114000
+## 113 healthcare   lost / stolen media                  130495
+## 114       2009             healthcare                 hacked
+## 115                                                         
+## 116       2009             healthcare    lost / stolen media
+## 117                                                         
+## 118       2009             healthcare                 hacked
+## 119                                                         
+## 120 government             inside job                 251000
+## 121   military             inside job                 260000
+## 122 government             inside job                 392000
+## 123       2009             healthcare    lost / stolen media
+## 124                                                         
+## 125  financial                 hacked                 400000
+## 126 healthcare                 hacked                 515000
+## 127   academic                 hacked                 760000
+## 128       2009             healthcare   lost / stolen media 
+## 129                                                         
+## 130        web                 hacked                1500000
+## 131 healthcare   lost / stolen media                 1700000
+## 132        web                 hacked                2300000
+## 133  financial   lost / stolen media                 2600000
+## 134  financial    lost / stolen media                3300000
+## 135   military   lost / stolen media                   72000
+## 136   military lost / stolen computer                 131000
+## 137   academic                 hacked                 160000
+## 138       2008             healthcare   lost / stolen media 
+## 139                                                         
+## 140 healthcare                 hacked                 531400
+## 141       tech                 hacked                 573000
+## 142 healthcare   lost / stolen media                 1023209
+## 143       2008             healthcare lost / stolen computer
+## 144                                                         
+## 145 healthcare   lost / stolen media                 1500000
+## 146  financial                 hacked                5000000
+## 147 government             healthcare                 hacked
+## 148                                                         
+## 149        web                 gaming                 hacked
+## 150                                                         
+## 151   military   lost / stolen media                76000000
+## 152  financial                 hacked              130000000
+## 153 government    lost / stolen media                  50000
+## 154   academic lost / stolen computer                  72000
+## 155 government    lost / stolen media                  84000
+## 156     retail lost / stolen computer                  97000
+## 157   telecoms lost / stolen computer                 113000
+## 158  financial                 hacked                1500000
+## 159 government accidentally published                1600000
+## 160 government    lost / stolen media                1700000
+## 161   academic lost / stolen computer                2100000
+## 162   academic    lost / stolen media                2200000
+## 163 government accidentally published                3950000
+## 164  financial                 hacked                5000000
+## 165 government accidentally published                6000000
+## 166     energy             inside job               11100000
+## 167  financial   lost / stolen media                12500000
+## 168        web                 hacked               18000000
+## 169 government             inside job                  89000
+## 170 government    lost / stolen media                 160000
+## 171     retail lost / stolen computer                 800000
+## 172  financial             inside job                1000000
+## 173        web                 hacked                1600000
+## 174 government    lost / stolen media                3000000
+## 175       2006             government    lost / stolen media
+## 176                                                         
+## 177     retail                 hacked                4200000
+## 178  financial                 hacked                6300000
+## 179  financial             inside job                8500000
+## 180     retail             inside job                8637405
+## 181 government   lost / stolen media                25000000
+## 182     retail                 hacked               94000000
+## 183       tech                 retail    lost / stolen media
+## 184                                                         
+## 185  financial             inside job                2600000
+## 186   telecoms                 hacked                4000000
+## 187       2005               telecoms   lost / stolen media 
+## 188                                                         
+## 189        web accidentally published               20000000
+## 190 government               military lost / stolen computer
+## 191                                                         
+## 192  financial          poor security                 125000
+## 193  financial    lost / stolen media                 200000
+## 194  financial   lost / stolen media                 3900000
+## 195  financial                 hacked               40000000
+## 196        web             inside job                 hacked
+## 197                                                         
+## 198
+</code></pre>
+
+<h2>Selecting records prior to 2008.</h2>
+
+<pre><code class="r">databreaches2&lt;-databreaches1[1:152 ,c(2,5)]
+databreaches2
+</code></pre>
+
+<pre><code>##               YEAR                RECORDS
+## 1             2014               76000000
+## 2             2014                5000000
+## 3             2014               56000000
+## 4             2014                 760000
+## 5             2014                4500000
+## 6             2013                  52000
+## 7             2013                 600000
+## 8             2013                 860000
+## 9             2013                1000000
+## 10            2013               24000000
+## 11            2013               20000000
+## 12            2013               70000000
+## 13            2013              145000000
+## 14            2013              152000000
+## 15            2013                1100100
+## 16            2013                4000000
+## 17            2013                4000000
+## 18            2013                 500000
+## 19            2012                4000000
+## 20            2012                 hacked
+## 21                                       
+## 22            2012                  16000
+## 23       Walgreens lost / stolen computer
+## 24                                       
+## 25            2012                 100000
+## 26            2012                 100000
+## 27            2012                 110000
+## 28            2012                 125000
+## 29            2012                 150000
+## 30            2012                 160000
+## 31            2012                 170000
+## 32            2012                 239326
+## 33            2012                 250000
+## 34            2012                 275000
+## 35            2012                 500000
+## 36            2012                1000000
+## 37            2012                1000000
+## 38            2012                1000000
+## 39            2012                1700000
+## 40            2012                2000000
+## 41            2012                2000000
+## 42            2012                6000000
+## 43            2012                 hacked
+## 44                                       
+## 45            2012               50000000
+## 46            2012               50000000
+## 47            2012               58000000
+## 48            2012                 500000
+## 49            2011 accidentally published
+## 50                                       
+## 51            2011                 315000
+## 52            2011                 420000
+## 53            2011                 hacked
+## 54                                       
+## 55            2011                 hacked
+## 56                                       
+## 57            2011                 800000
+## 58            2011                1800000
+## 59            2011                3000000
+## 60            2011                 228435
+## 61            2011                6500000
+## 62            2011                1500000
+## 63            2011                8000000
+## 64        eHarmony                    web
+## 65         8000000                       
+## 66            2011                8700000
+## 67            2011                9000000
+## 68            2011               24000000
+## 69            2011              160000000
+## 70            2011                  30000
+## 71            2011 accidentally published
+## 72                                       
+## 73            2011               14000000
+## 74            2010                  34000
+## 75            2010                  50000
+## 76            2010                  62000
+## 77            2010                  73000
+## 78            2010                 102153
+## 79            2010                 123461
+## 80            2010                 175350
+## 81            2010                 180000
+## 82            2010                 200000
+## 83            2010                 200000
+## 84            2010                 210000
+## 85            2010                 283000
+## 86            2010                 300000
+## 87            2010                 360083
+## 88            2010                 400000
+## 89            2010                 514330
+## 90            2010                 935000
+## 91            2010                1000000
+## 92            2010                1000000
+## 93            2010                1055489
+## 94            2010                1270000
+## 95            2010                1290755
+## 96            2010                2500000
+## 97            2010                3500000
+## 98            2010                4243434
+## 99            2010 lost / stolen computer
+## 100                                      
+## 101           2010                6000000
+## 102           2010                8300000
+## 103           2010               10000000
+## 104           2010               13200000
+## 105           2010               24600000
+## 106           2010               28000000
+## 107           2010               35000000
+## 108           2010               77000000
+## 109           2010                1900000
+## 110           2009                  43000
+## 111           2009                 105470
+## 112           2009                 114000
+## 113           2009                 130495
+## 114           Inc.                 hacked
+## 115                                      
+## 116           Ltd.    lost / stolen media
+## 117                                      
+## 118             PA                 hacked
+## 119                                      
+## 120           2009                 251000
+## 121           2009                 260000
+## 122           2009                 392000
+## 123           Inc.    lost / stolen media
+## 124                                      
+## 125           2009                 400000
+## 126           2009                 515000
+## 127           2009                 760000
+## 128  Massachusetts   lost / stolen media 
+## 129                                      
+## 130           2009                1500000
+## 131           2009                1700000
+## 132           2009                2300000
+## 133           2009                2600000
+## 134           2009                3300000
+## 135           2008                  72000
+## 136           2008                 131000
+## 137           2008                 160000
+## 138           Inc.   lost / stolen media 
+## 139                                      
+## 140           2008                 531400
+## 141           2008                 573000
+## 142           2008                1023209
+## 143           Inc. lost / stolen computer
+## 144                                      
+## 145           2008                1500000
+## 146           2008                5000000
+## 147           2008                 hacked
+## 148                                      
+## 149           2008                 hacked
+## 150                                      
+## 151           2008               76000000
+## 152           2008              130000000
+</code></pre>
+
+<h2>cleaning the rows containing inappropriate data</h2>
+
+<pre><code class="r">databreaches3&lt;-databreaches2[c(1:20,25:43,51:53,73:98,101:113,130:137,140:142,145:147,151:152) ,]
+databreaches3
+</code></pre>
+
+<pre><code>##     YEAR   RECORDS
+## 1   2014  76000000
+## 2   2014   5000000
+## 3   2014  56000000
+## 4   2014    760000
+## 5   2014   4500000
+## 6   2013     52000
+## 7   2013    600000
+## 8   2013    860000
+## 9   2013   1000000
+## 10  2013  24000000
+## 11  2013  20000000
+## 12  2013  70000000
+## 13  2013 145000000
+## 14  2013 152000000
+## 15  2013   1100100
+## 16  2013   4000000
+## 17  2013   4000000
+## 18  2013    500000
+## 19  2012   4000000
+## 20  2012    hacked
+## 25  2012    100000
+## 26  2012    100000
+## 27  2012    110000
+## 28  2012    125000
+## 29  2012    150000
+## 30  2012    160000
+## 31  2012    170000
+## 32  2012    239326
+## 33  2012    250000
+## 34  2012    275000
+## 35  2012    500000
+## 36  2012   1000000
+## 37  2012   1000000
+## 38  2012   1000000
+## 39  2012   1700000
+## 40  2012   2000000
+## 41  2012   2000000
+## 42  2012   6000000
+## 43  2012    hacked
+## 51  2011    315000
+## 52  2011    420000
+## 53  2011    hacked
+## 73  2011  14000000
+## 74  2010     34000
+## 75  2010     50000
+## 76  2010     62000
+## 77  2010     73000
+## 78  2010    102153
+## 79  2010    123461
+## 80  2010    175350
+## 81  2010    180000
+## 82  2010    200000
+## 83  2010    200000
+## 84  2010    210000
+## 85  2010    283000
+## 86  2010    300000
+## 87  2010    360083
+## 88  2010    400000
+## 89  2010    514330
+## 90  2010    935000
+## 91  2010   1000000
+## 92  2010   1000000
+## 93  2010   1055489
+## 94  2010   1270000
+## 95  2010   1290755
+## 96  2010   2500000
+## 97  2010   3500000
+## 98  2010   4243434
+## 101 2010   6000000
+## 102 2010   8300000
+## 103 2010  10000000
+## 104 2010  13200000
+## 105 2010  24600000
+## 106 2010  28000000
+## 107 2010  35000000
+## 108 2010  77000000
+## 109 2010   1900000
+## 110 2009     43000
+## 111 2009    105470
+## 112 2009    114000
+## 113 2009    130495
+## 130 2009   1500000
+## 131 2009   1700000
+## 132 2009   2300000
+## 133 2009   2600000
+## 134 2009   3300000
+## 135 2008     72000
+## 136 2008    131000
+## 137 2008    160000
+## 140 2008    531400
+## 141 2008    573000
+## 142 2008   1023209
+## 145 2008   1500000
+## 146 2008   5000000
+## 147 2008    hacked
+## 151 2008  76000000
+## 152 2008 130000000
+</code></pre>
+
+<h2>Plotting the Graph{databreaches by year}</h2>
+
+<pre><code class="r">library(ggplot2)
+ggplot(databreaches3, aes(x=YEAR, y=RECORDS)) + geom_bar(stat=&quot;identity&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk ggplot2ex"/> </p>
+
+<h2>Cleaning the data for another graph</h2>
+
+<pre><code class="r">databreaches4&lt;-databreaches1[1:152,c(2,4:5)]
+databreaches4
+</code></pre>
+
+<pre><code>##               YEAR                 METHOD                RECORDS
+## 1             2014                 hacked               76000000
+## 2             2014                 hacked                5000000
+## 3             2014                 hacked               56000000
+## 4             2014          poor security                 760000
+## 5             2014                 hacked                4500000
+## 6             2013          poor security                  52000
+## 7             2013                 hacked                 600000
+## 8             2013                 hacked                 860000
+## 9             2013                 hacked                1000000
+## 10            2013                 hacked               24000000
+## 11            2013             inside job               20000000
+## 12            2013                 hacked               70000000
+## 13            2013                 hacked              145000000
+## 14            2013                 hacked              152000000
+## 15            2013                 hacked                1100100
+## 16            2013                 hacked                4000000
+## 17            2013                 hacked                4000000
+## 18            2013                 hacked                 500000
+## 19            2012    lost / stolen media                4000000
+## 20            2012                   tech                 hacked
+## 21                                                              
+## 22            2012                hacked                   16000
+## 23       Walgreens             healthcare lost / stolen computer
+## 24                                                              
+## 25            2012 lost / stolen computer                 100000
+## 26            2012 lost / stolen computer                 100000
+## 27            2012                 hacked                 110000
+## 28            2012                 hacked                 125000
+## 29            2012          poor security                 150000
+## 30            2012                 hacked                 160000
+## 31            2012 accidentally published                 170000
+## 32            2012                 hacked                 239326
+## 33            2012                hacked                  250000
+## 34            2012                 hacked                 275000
+## 35            2012                 hacked                 500000
+## 36            2012                 hacked                1000000
+## 37            2012                 hacked                1000000
+## 38            2012                 hacked                1000000
+## 39            2012             inside job                1700000
+## 40            2012                 hacked                2000000
+## 41            2012             inside job                2000000
+## 42            2012 accidentally published                6000000
+## 43            2012                    web                 hacked
+## 44                                                              
+## 45            2012                 hacked               50000000
+## 46            2012                 hacked               50000000
+## 47            2012                 hacked               58000000
+## 48            2012                 hacked                 500000
+## 49            2011               military accidentally published
+## 50                                                              
+## 51            2011          poor security                 315000
+## 52            2011 accidentally published                 420000
+## 53            2011                    web                 hacked
+## 54                                                              
+## 55            2011             healthcare                 hacked
+## 56                                                              
+## 57            2011   lost / stolen media                  800000
+## 58            2011             inside job                1800000
+## 59            2011                 hacked                3000000
+## 60            2011             inside job                 228435
+## 61            2011 accidentally published                6500000
+## 62            2011                 hacked                1500000
+## 63            2011                 hacked                8000000
+## 64        eHarmony                   2011                    web
+## 65         8000000                                              
+## 66            2011                 hacked                8700000
+## 67            2011                 hacked                9000000
+## 68            2011                 hacked               24000000
+## 69            2011                 hacked              160000000
+## 70            2011                 hacked                  30000
+## 71            2011                 retail accidentally published
+## 72                                                              
+## 73            2011                 hacked               14000000
+## 74            2010   lost / stolen media                   34000
+## 75            2010 accidentally published                  50000
+## 76            2010                 hacked                  62000
+## 77            2010                 hacked                  73000
+## 78            2010    lost / stolen media                 102153
+## 79            2010 accidentally published                 123461
+## 80            2010          poor security                 175350
+## 81            2010                 hacked                 180000
+## 82            2010                 hacked                 200000
+## 83            2010                 hacked                 200000
+## 84            2010          poor security                 210000
+## 85            2010          poor security                 283000
+## 86            2010                 hacked                 300000
+## 87            2010                 hacked                 360083
+## 88            2010 lost / stolen computer                 400000
+## 89            2010 lost / stolen computer                 514330
+## 90            2010 accidentally published                 935000
+## 91            2010          poor security                1000000
+## 92            2010                 hacked                1000000
+## 93            2010   lost / stolen media                 1055489
+## 94            2010                 hacked                1270000
+## 95            2010                 hacked                1290755
+## 96            2010             inside job                2500000
+## 97            2010 accidentally published                3500000
+## 98            2010 lost / stolen computer                4243434
+## 99            2010             healthcare lost / stolen computer
+## 100                                                             
+## 101           2010                 hacked                6000000
+## 102           2010   lost / stolen media                 8300000
+## 103           2010                 hacked               10000000
+## 104           2010                 hacked               13200000
+## 105           2010                 hacked               24600000
+## 106           2010                 hacked               28000000
+## 107           2010                 hacked               35000000
+## 108           2010                 hacked               77000000
+## 109           2010   lost / stolen media                 1900000
+## 110           2009 accidentally published                  43000
+## 111           2009 lost / stolen computer                 105470
+## 112           2009                 hacked                 114000
+## 113           2009   lost / stolen media                  130495
+## 114           Inc.             healthcare                 hacked
+## 115                                                             
+## 116           Ltd.             healthcare    lost / stolen media
+## 117                                                             
+## 118             PA             healthcare                 hacked
+## 119                                                             
+## 120           2009             inside job                 251000
+## 121           2009             inside job                 260000
+## 122           2009             inside job                 392000
+## 123           Inc.             healthcare    lost / stolen media
+## 124                                                             
+## 125           2009                 hacked                 400000
+## 126           2009                 hacked                 515000
+## 127           2009                 hacked                 760000
+## 128  Massachusetts             healthcare   lost / stolen media 
+## 129                                                             
+## 130           2009                 hacked                1500000
+## 131           2009   lost / stolen media                 1700000
+## 132           2009                 hacked                2300000
+## 133           2009   lost / stolen media                 2600000
+## 134           2009    lost / stolen media                3300000
+## 135           2008   lost / stolen media                   72000
+## 136           2008 lost / stolen computer                 131000
+## 137           2008                 hacked                 160000
+## 138           Inc.             healthcare   lost / stolen media 
+## 139                                                             
+## 140           2008                 hacked                 531400
+## 141           2008                 hacked                 573000
+## 142           2008   lost / stolen media                 1023209
+## 143           Inc.             healthcare lost / stolen computer
+## 144                                                             
+## 145           2008   lost / stolen media                 1500000
+## 146           2008                 hacked                5000000
+## 147           2008             healthcare                 hacked
+## 148                                                             
+## 149           2008                 gaming                 hacked
+## 150                                                             
+## 151           2008   lost / stolen media                76000000
+## 152           2008                 hacked              130000000
+</code></pre>
+
+<h2>Plotting the graph{databreaches by method}</h2>
+
+<pre><code class="r">library(ggplot2)
+ggplot(databreaches4, aes(x=METHOD, y=YEAR)) + geom_bar(stat=&quot;identity&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABXgAAAV4CAMAAAAt1UUFAAAC31BMVEUAAAABAQECAgIDAwMEBAQFBQUGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0ODg4PDw8QEBARERESEhITExMUFBQWFhYXFxcYGBgZGRkaGhobGxscHBwdHR0eHh4fHx8gICAhISEjIyMkJCQlJSUmJiYnJycoKCgqKiorKyssLCwtLS0uLi4vLy8wMDAxMTEyMjIzMzM0NDQ1NTU2NjY3Nzc4ODg5OTk6Ojo7Ozs8PDw9PT0+Pj4/Pz9BQUFCQkJDQ0NFRUVGRkZHR0dISEhJSUlKSkpLS0tMTExNTU1OTk5PT09QUFBRUVFSUlJTU1NVVVVWVlZXV1dZWVlaWlpbW1tcXFxdXV1eXl5fX19gYGBhYWFiYmJjY2NkZGRlZWVmZmZnZ2dpaWlra2tsbGxtbW1ubm5vb29wcHBxcXFycnJzc3N0dHR1dXV2dnZ3d3d4eHh5eXl7e3t9fX1+fn5/f3+AgICBgYGCgoKDg4OEhISFhYWGhoaHh4eIiIiJiYmKioqLi4uMjIyNjY2Ojo6Pj4+QkJCRkZGSkpKTk5OUlJSVlZWWlpaXl5eYmJiZmZmampqbm5ucnJydnZ2enp6fn5+goKChoaGioqKjo6OkpKSlpaWmpqanp6eoqKipqamqqqqrq6usrKytra2urq6vr6+wsLCxsbGysrKzs7O0tLS1tbW2tra3t7e4uLi5ubm6urq7u7u8vLy9vb2+vr6/v7/AwMDBwcHCwsLDw8PExMTFxcXGxsbHx8fIyMjJycnKysrLy8vMzMzNzc3Ozs7Pz8/Q0NDR0dHS0tLT09PU1NTV1dXW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7f39/g4ODh4eHi4uLj4+Pk5OTl5eXm5ubn5+fo6Ojp6enq6urr6+vs7Ozt7e3u7u7v7+/w8PDx8fHy8vLz8/P09PT19fX29vb39/f4+Pj5+fn6+vr7+/v8/Pz9/f3+/v7////EFxIoAAAACXBIWXMAAB7CAAAewgFu0HU+AAAgAElEQVR4nOzd+4/b95rY99mcXRykaNqi2W3QBEGBNk0XBdoNimSLLjbdpkkK9IcUzS8tNlgU3Rb9oUmLpsWHM5yLRhpZd0uWbMmjuyXLd1m27CP72NbxRbZ8layL7zJt2bIsH1vWfeb7B/Tz+X7JITkaks88Dzmceeb9Bs6xKPHhl3zI70vUaDQzkBER0YI20O87QES03AJeIqIFDniJiBY44CUiWuCAl4hogQNeIqIFDniJiBY44CUiWuCAl4hogQNeIqIFDniJiBY44CUiWuCAl4hogQNeIqIFDniJiBY44CUiWuCAl4hogQNeIqIFDniJiBY44CUiWuCAl4hogQNeIqIFDniJiBY44CUiWuCAl4hogQNeIqIFDniJiBY44CUiWuCAl4hogQNeIqIFDniJiBY44CUiWuCAl4hogQNeIqIFDniJiBY44CUiWuCAl4hogQNeIqIFDniJiBY44K1XEXQtyy5Lrteir7PsjmG88lOW/WCZn5Y9ylZdybKfLPO3s+yiYfy7LLtuOfz1LPvOMH4xy251vNLfU9fxprNs2nDvK7/Nsh8t83ey7GvD+OUsu2Y5/I0s+9Yw/m2W3bQc/ucs+15yPSk2wFtPslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oA3y6bCh5qxxZ5kr8BrmQde4NW27OD99J5/8c/+t/t/Li7c+ObDF/fd8ycDL2hxW8xJ9gq8lnngBV5tywzeqf/3dwdSf/2luLd//XcHqr1gI25xJtkr8FrmgRd4tS0zeP+fGrV/9c0bf39gAHiB1xDwAq+25QXv6d8ZGPjFf/m//M//+cDA31sZwf3Ff/Cf/Sf/6X/957t/siK3GJPsFXgt88ALvNqWF7z/18DA3341/nd63+8N/M7A72+/bbRtUSfZK/Ba5oEXeLUtL3j/ycDAE8WP/jK+333UwtriT7JX4LXMAy/walte8P7HA//OdPGj1wYGft+A2lJIslfgtcwDL/BqW17w/nLgD6s/+npg4O/rTVsSSfYKvJZ54AVebcsL3oGBP6n+aGpg4M8MqC2FJHsFXss88AKvtuUG75/Wfwi8wAu8HQLeFgFvU8BbT7JX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWp3JXP0AACAASURBVOaBF3i1Aa/bJHsFXss88AKvtuUG7x+dqDYw8F+cmOlHK3KLMclegdcyD7zAq225wTt3LxiNW5RJ9gq8lnngBV5twAu8+oAXeIFX1fKC999r0XErcosxyV6B1zIPvMCrbXnBu6yS7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagPeLPtm437N2GJPslfgtcwDL/BqW/bw/rDjH/1iIMx7bAkk2SvwWuaBF3i1LW94rx38Z79Mn04W5mnakkiyV+C1zAMv8GpbxvDeevp/+jeLT+P9va0K1xZ9kr0Cr2UeeIFX23KFd+qlv/zrVXX/6YNXdLIt8iR7BV7LPPACr7ZlCe/0W//qbzlXNwPezgFvxysBb4uAtykJvGdKf2fm3wq7VTcD3s4Bb8crAW+LgLepjvB+seqPqu91/7vJ/3HA9af9SvYKvJZ54AVebcsL3nv/pFD3d//x9u+z7C+AF3gt88ALvNqWF7y5ur/4b7Z9l18CXuAF3vYBb4uAt6nO8P6dLd/WLgEv8AJv+4C3RcDblOAd7z/YdKl6CXiBF3jbB7wtAt6mOkj67xYf4f3vD1xPl4AXeIG3fcDbIuBtqoOkN5/45381t/ff+osXp4AXeIG3Q8DbIuBtqrOkP+78x7/I7f3b//q/BV7gtcwDL/BqW3bwxr7Z8A9q/4Diudt62BZ7kr0Cr2UeeIFX23KEN/ZR+e8W8v7B//7KlBK2xZ5kr8BrmQde4NW2TOFNX6/hX/77hb1/61+9Oa2SbZEn2SvwWuaBF3i1LVt4Y3eO/cW/Xdg7On/WFn+SvQKvZR54gVfbcoY3duOR/+GXfCF0dcALvMCrapnDG/th+5/9lTD/scWfZK/Aa5kHXuDVBryxr95TjS3yJHsFXss88AKvNuB1m2SvwGuZB17g1Qa82cNr1iimFn+SvQKvZR54gVfb8oL3D//wz6s/evHgwdpP/pnTf8Am2SvwWuaBF3i1LS94Bwb+tPqjP61rC7zqgBd4gVcV8AKvPuAFXuBVBbzAqw94gRd4VQEv8OoDXuAFXlXAC7z6gBd4gVcV8AKvPuAFXuBVBbzAqw94gRd4VQEv8OoDXuAFXlXAC7z6gBd4gVcV8AKvPuAFXuBVBbzAqw94gRd4VQEv8OoDXuAFXlXLDd4//rrojwcGqj/6+r8CXm3AC7zAq2q5wTt3VuMWZZK9Aq9lHniBVxvwAq8+4AVe4FUFvMCrD3iBF3hVLS94l1WSvQKvZR54gVcb8LpNslfgtcwDL/BqW17wTlsxW0pJ9gq8lnngBV5tywvef3TOqtkSSrJX4LXMAy/walte8A78snTd6tmSSbJX4LXMAy/waltm8A4M/IdHraAtlSR7BV7LPPACr7blBe8fpM8d++fiW1vaSfYKvJZ54AVebcsL3h/+5e9Gef/a+jtW1JZCkr0Cr2UeeIFX2/KCN8vO/JP0pvePXreZtiSS7BV4LfPAC7zalhu8WfbUfxTl/Z2//N5i2pJIslfgtcwDL/BqW37wZjdX/bVI7x/s9v5JvZK9Aq9lHniBV9syhDcu/F/8TqT3H36oNm1JJNkr8FrmgRd4tS1LeLPsxB9HeX/3b9ZarbRtUSfZK/Ba5oEXeLUtU3iz6f+v8auTBZVsizzJXoHXMg+8wKttmcL70//9e8BbAV7g7RDwtgh4m5LBO73/b0Zt/42VJ2q5/CcVkr0Cr2UeeIFX23KE94N/mN7l/tNP1aQtjSR7BV7LPPACr7blB+9v/89fRHb/xkPeP5sMeDsGvB2vBLwtAt6mOsI7vftvpLe7/+sVG2pLIclegdcyD7zAq22ZwfvunyR2//AVo2lLIslegdcyD7zAq215wft//JXI7i+Hb1pNWxJJ9gq8lnngBV5tywve9Hb3z85bRVsiSfYKvJZ54AVebcsN3t/f6f4v1WpJ9gq8lnngBV5tywzeP//OytnSSbJX4LXMAy/walte8B6zYraUkuwVeC3zwAu82pYXvMsqyV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngBV5twOs2yV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNhG8vVs+8PYuyV6B1zIPvMCrDXjdJtkr8FrmgRd4tQGv2yR7BV7LPPACrzbgdZtkr8BrmQde4NUGvG6T7BV4LfPAC7zagNdtkr0Cr2UeeIFXG/C6TbJX4LXMAy/wagNet0n2CryWeeAFXm3A6zbJXoHXMg+8wKsNeN0m2SvwWuaBF3i1Aa/bJHsFXss88AKvNuB1m2SvwGuZB17g1Qa8bpPsFXgt88ALvNqA122SvQKvZR54gVcb8LpNslfgtcwDL/BqA163SfYKvJZ54AVebcDrNslegdcyD7zAqw143SbZK/Ba5oEXeLUBr9skewVeyzzwAq824HWbZK/Aa5kHXuDVBrxuk+wVeC3zwAu82oDXbZK9Aq9lHniBVxvwuk2yV+C1zAMv8GoDXrdJ9gq8lnngXezw9u7eA29TwFtPslfgtcwDr+XcB94+3n3g7V2SvQKvZX4pwGs8d9XjwNs+4HWbZK/Aa5kHXsu5D7x9vPvA27skewVeyzzwWs594O3j3Qfe3iXZK/Ba5oHXcu4Dbx/vPvD2LslegdcyD7yWcx94+3j3gbd3SfYKvJZ54LWc+8Dbx7sPvL1LslfgtcwDr+XcB94+3n3g7V2SvQKvZR54Lec+8Pbx7gNv75LsFXgt88BrOfeBt9d3vwuPXooN8NaTPP3Aa5kHXtHJ2yLg7fXd78Kjl2IDvPUkTz/wWuaBV3Tytgh4e333u/DopdgAbz3J0w+8lnngFZ28LQLeXt/9Ljx6KTbAW0/y9AOvZR54RSdvi4C313e/C49eig3w1pM8/cBrmQde0cnbIuDt9d3vwqOXYgO89SRPP/Ba5oFXdPK2CHh7ffe78Oil2ABvPcnTD7yWeeAVnbwtAt5e3/0uPHopNsBbT/L0A69lHnhFJ2+LgLfXd78Lj16KDfDWkzz9wGuZB17Rydsi4O313e/Co5diA7z1JE8/8FrmgVd08rYIeHt997vw6KXYAG89ydMPvJZ54BWdvC0C3l7f/S48eik2wFtP8vQDr2UeeEUnb4uAt9d3vwuPXooN8NaTPP3Aa5kHXtHJ2yLg7fXd78Kjl2IDvPUkTz/wWuaBV3Tytgh4e333u/DopdgAbz3J0w+8lnngFZ28LQLeXt/9Ljx6KTbAW0/y9AOvZR54RSdvi4C313e/C49eig3w1pM8/cBrmQde0cnbIuDt9d3vwqOXYgO89SRPP/Ba5oFXdPK2CHh7ffe78Oil2ABvPcnTD7yWeeAVnbwtAt5e3/0uPHopNsBbT/L0A69lHnhFJ2+LgLfXd78Lj16KDfDWkzz9wGuZB17Rydsi4O313e/Co5diA7z1JE8/8FrmgVd08rYIeHt997vw6KXYAG89ydMPvJZ54BWdvC0C3l7f/S48eik2wFtP8vQDr2UeeEUnb4uAt9d3vwuPXooN8NaTPP3Aa5kHXtHJ2yLg7fXd78Kjl2IDvPUkTz/wWuaBV3Tytgh4e333u/DopdgAbz3J0w+8lnngFZ28LQLeXt/9Ljx6KTbAW0/y9AOvZR54RSdvi4C313e/C49eig3w1pM8/cBrmQde0cnbIuDt9d3vwqOXYgO89SRPP/Ba5oFXdPK2CHh7ffe78Oil2ABvPcnTD7yWeeAVnbwtAt5e3/0uPHopNsBbT/L0A69lHnhFJ2+LgLfXd78Lj16KDfDWkzz9wGuZB17RyduipQBv7x498Lqt49NaAV7g7dW5C7ztA163dXxaK8ALvL06d4G3fcDrto5PawV4gbdX5y7wtg943dbxaa0AL/D26twF3vYBr9s6Pq0V4AXeXp27wNs+4HVbx6e1ArzA26tzF3jbB7xu6/i0VoAXeHt17gJv+4DXbR2f1grwAm+vzl3gbR/wuq3j01oBXuDt1bkLvO0DXrd1fForwAu8vTp3gbd9wOu2jk9rBXiBt1fnLvC2D3jd1vFprQAv8Pbq3AXe9gGv2zo+rRXgBd5enbvA2z7gdVvHp7UCvMDbq3MXeNsHvG7r+LRWgBd4e3XuAm/7gNdtHZ/WCvACb6/OXeBtH/C6rePTWgFe4O3VuQu87QNet3V8WivAC7y9OneBt33A67aOT2sFeIG3V+cu8LYPeN3W8WmtAC/w9urcBd72Aa/bOj6tFeAF3l6du8DbPuB1W8entQK8wNurcxd42we8buv4tFaAF3h7de4Cb/uA120dn9YK8AJvr85d4G0f8Lqt49NaAV7g7dW5C7ztA163dXxaK8ALvL06d4G3fcDrto5PawV4gbdX5y7wtg943dbxaa0AL/D2OBJIjQAAIABJREFU6twF3vYBr9s6Pq0V4AXeXp27wNs+4HVbx6e1ArzA26tzF3jbB7xu6/i0VoAXeHt17gJv+4DXbR2f1grwAm+vzl3gbR/wuq3j01oBXuDt1bkLvO0DXrd1fForwAu8vTp3gbd9wOu2jk9rBXiBt1fnLvC2D3jd1vFprQAv8Pbq3AXe9gGv2zo+rRXgBd5enbvA2z7gdVvHp7UCvMDbq3MXeNsHvG7r+LRWgBd4e3XuAm/7gNdtHZ/WCvACb6/OXeBtH/C6rePTWgFe4O3VuQu87QNet3V8WivAC7y9OneBt33A67aOT2sFeIG3V+cu8LYPeN3W8WmtAC/w9urcBd72Aa/bOj6tFeAF3l6du8DbPuB1W8entQK8wNurcxd42we8buv4tFaAF3h7de4Cb/uA120dn9YK8AJvr85d4G0f8Lqt49NaAV7g7dW5C7ztA163dXxaK8ALvL06d4G3fcDrto5PawV4gbdX5y7wtg943dbxaa0AL/D26twF3vYBr9s6Pq0V4AXeXp27wNs+4HVbx6e1ArzA26tzF3jbB7xu6/i0VoAXeHt17gJv+4DXbR2f1grwAm+vzl3gbR/wuq3j01oBXuDt1bkLvO0DXrd1fForwAu8vTp3gbd9wOu2jk9rBXiBt1fnLvC2D3jd1vFprQAv8Pbq3AXe9gGv2zo+rRXgBd5enbvA2z7gdVvHp7UCvMDbq3MXeNsHvG7r+LRWgBd4e3XuAm/7gNdtHZ/WCvACb6/OXeBtH/C6rePTWgFe4O3VuQu87QNet3V8WivAC7y9OneBt33A67auvfpaB7zAq37xAG+v734X7r0UG+Ct17VXX+uAF3jVLx7g7fXd78K9l2IDvPW69uprHfACr/rFswzgXeKHrwCvpq69+loHvMCrfvEA72I/fAV4NXXt1dc64AVe9YsHeBf74SvAq6lrr77WieBVH77z8YG345WMy+/hkwe8i/3wFeDV1LVXX+uAF3jVTx7wLvbDV4BXU9defa0DXuBVP3nAu9gPXwFeTV179bUOeIFX/eQB72I/fAV4NXXt1dc64AVe9ZMHvIv98BXg1dS1V1/rgBd41U8e8C72w1eAV1PXXn2tA17gVT95Enith7fe++V9+ArwaurWudcm4AVe9ZMHvIv98BXg1dStc69NwAu86icPeBf74SvAq6lb516bgBd4ezS/KA7fb/n6fPgK8Grq1rnXJuAF3h7NL4rD91u+Ph++AryaunXutQl4O8Pbu0cPvL0+fL/l6/PhK8CraQFOfeAF3h7NL4rD91u+Ph++AryaFuDUB17g7dH8ojh8v+Xr8+ErwKtpAU594AXeHs0visP3W74+H76ypOH99KH1I1uf+rF28auDq8rrj17rwcXZLcCpD7zA26P5RXH4fsvX58NXljC800+FvNHTxeWTg/nFie/mvPhWcXFF86+umvvK1Yvlr1scegFOfeAF3h7NL4rD91u+Ph++soThPRnC5KkvTkyE0R/Sxa9KYfOpC8dHwsapOS5+GaqN3az+atG6+pW3hXLT7IMhbJia+9ALcOoDL/D2aH5RHL7f8vX58JWlC+/UirAn6pD9OBoeT5d3hbU34n8+DuHkHBfXxje740OrRkN4MF28P14cGxqPb2zfql35s1J4ZmZ2xYOrh5PNJ+c+9gKc+sALvD2aXxSH77d8fT58ZenC+10In+c/eCrcG///p1I4kV98MOy4++Kl2jvc2Pf5r9Z+YkNx5ZdeXhHCqzOztXbMfewFOPWBF3h7NL8oDt9v+fp8+MrShffDEH7Kf/BqGJrOP/BwJb94PJSu33XxsYjoeHzHG3VN73FfDcU73qH43+LKeUeLK7+VPgRRzmlOF+doAU594AXeHs0visP3W74+H76ydOH9JITivj8TxuP/Hwnri5+/GMKXd13cUn/DG/Zl2WTDxU/SlQdHy9HZg8WVDzT86pdzHnsBTn3gBd4ezS+Kw/dbvj4fvrJ04b01Fh5N/72+Kjwc/7M7TBY/fz2Ed++6ON5g6eYsu6fh4ovpysVnMewvrrwh/nAwbMx/6t05j70Apz7wAm+P5hfF4fstX58PX1m68GbvhvDYlz+cvTesTJ/VsDUcKH56uhReveviqlD85dpY/O/aLBsOM3+5lq63NQzl73gfLK4clR4P5YLlX9WOdqXB6v0z90G9/+6sQH34Lh2/zy3V7RvHrfOL4vB9u/uL4/DzaNHBm71f4LjpcrqwKTxR/ekV4aW7Lo40sLkmyyK4M3+B9kC68lD+w+3FlccarnywdrBLDT85OXMXFnD/c6U+PPD2//DqceBd+oefR4sO3qsPFwyOvpY+q2xjeLr686vCC3ddHC3+ci1/i7sqy0oNf7m2IV25aPW1/MqNH5e4v3a0Lxp+8p6Z+7CA+58r9eGBt/+HV48D79I//DxabPBevzeseP3yjcoTpfBcvLij+IhvrBzeuOti4zveiQLeBkV3hMHiZyaG0pUnGn51Z+1wXzX85OaZO7GA+58r9eGBt/+HV48D79I//DxabPA+H8rf5D94KYSL6VMR9hU/fzuE03ddXBm5HBuc+VBD4zve1enKhbvpCqeLv1yr4Xu4drhKA7z3ztyJBdz/XKkPD7z9P7x6HHiX/uHn0eKCd1sYDo8VP5waDuGb7HDYXlz8KYQvstkXNzez2XAprExXrn/I94v0LzPqfVg74IWGn1w7czcWcP9zpT488Pb/8Opx4F36h59Hiw3eUvhN9ccbE7wvhdHiCyucy/9t2qyLa5OX1U9U2F7AW3wlh/xDvs+ni08V73i/zz6dxXLR1w0/uXXmbizg/udKfXjg7f/h1ePAu/QPP4/6BW+U86XqD+P71svFj35I71Gfrf70ygTvZ0nE9AVwjoTV01m6+EX+i8XFgyENlPIPNjyQw7uy+pUcEq3PpYtvxffC8UrXmuEdqd2Nzxt+cmLmzi3g/udKffjFAa/13vf50RsPrx4H3qV/+HnUL3hvDIa9xY+uRvOKL8CQfRDCaFiTf6Gx9E/YIrx3Vhbw3lmbf1w2Xnwm/WL14v3Jy+GCzV05vPflvzqYv+N9PH2GWIT3gXL6p2o34q/ufHdNceUttbvh8h1vv8YXx8nTt+0viu31+fD9lq/Ph59HfftQw9YwPp3/4P0w828Xngkhvv3d9dv4w/MTObzp79givNPPhMH8XfFLYeizbObijiqZpRl4S+lXj9QxvSfe3ur43zeza42f87Cpdi++bPjJdTP3bQH3P1fqw3Pu9nP7i2J7fT58v+Xr8+HnUffgjXQ9Ub90Jl482+7qR0PIvz75Z2ujm0nTLH8HuzeqObRlV3xnOpTDe3tjehccO5R/cPdiCIO71kRDj4bxrDJUdzdsmUr3IAzeNzEY7u7x9G/dGqp9WoPLz2ro1/jiOHn6tv1Fsb0+H77f8vX58POoq/CO17/C+COd4D0Xwtvx3enRqnrPxbe/d8oh7Js+XXzJhd1v5vDmX1Qs72B6g3yp+Lu0wePfhfGzQ022PpM1XTx7drgQu7D5/azc+KufV+9F44ca7pu5bwu4/7lSH55zt5/bXxTb6/Ph+y1fnw8/j7oKb/i4duHOWCd4b5TSG+T0lRzDmfRhhePFn/v3xTe5n+xfPTy0ZksO7/TmELaH8MbOEO4pr3rko3T9e3a9GlaF8qx3toNXmy5+ng2H1cWb4QT0puJzz6pve8vT1Xvh8l+u9Wt8cZw8fdv+othenw/fb/n6fPh51E14V4UnaxfOxwvt4c22xj/b/zwcdoe12ZEwHkZ+zl6L+m07f/7EihqFF7Psx/SfEH7+oXh7m97Dvjkd3/iuqola77OmS9uykbCifnEk29bwizMfVfi6aaLWAu5/rtSH59zt5/YXxfb6fPh+y9fnw8+jbsL7VFhZ+1jD4/FCB3iPhtL1V8O6/fGN77lQKocPsofDrDexb2TZpe05vFcfCGHzJx8dTj97M33EYWUI6w43X/tUbbr473ejtU/xPZbe6ta/aGQp/9yzot58OplxXj3OuduFjIdXj/PkLf3Dz6NuwvvuqvT1x1NT4+HjKrzXXtw6NrR25wdVki88tKG8ZueZ6fyDvK9NhFIpHJ2+ORTWh6dfLIemvwCL72g3//rm1zm86SO9g+seufKr+N+zYST/omIX322+9snql8Gpfn7Z6xO1m7u/geOimc9q6M3HeI3z6nHO3SV8eJ68pX/4edRNeN9/qvaxhk/C6hsFvN/UvjxC/ndj2bHqpcP5B3mrjawuRxarXobde/bE97TXCy3D2ujz+fSVdItrftQA729r39un2uaNTRf3bar96MH4v1Lj18ipfwXIxk8n2zjzUKz7N86rxzl3l/DhefKW/uHnUVfh/bT2sYbD4cjNHN7pB8LIrz+/eGZnCOey/N+U7T538fxkCJ9m2fpZH6Qth/i+d7y44vSeXMxj5bBx5lcffi6EnS3hTR9AqP8wNlH72MLE4+nnVja+m364dqcb4V0/81Cs+zfOq8c5d5fw4Xnylv7h51FX4Z1amUCNbE6Ezwt4fwzhnfQzdzaEY/E/T4fNSeZbE+nSlvQ2dH04Ei/kX51xTxjbFnamK05feSn/iMGBLP9owrr0f7viu+kn8y8vNgNv04caoqs7ih/N/jzeE41fiXcot37mQw0XG36pe3+5ZpxXj3PuLuHD8+Qt/cPPo67CG2V8Kv3w87BquoD3Uv5xg9ih/KMQu8Oh/NKp4/HX7kvvcAfD+Xhhejxs2vNA2Lst7DoUHn2m9ikLB7Lp9AVv8g/EPhRv4HT+FrnVhxrWvBzmbH/ucuM3ZKt/PV7+cm3RHb7fJ0+/Ds+Tt/QPP4+6C+/HYVV6R/tM9Pdm02c1TG3J4X0qjJye+UcWj4WwIfqaw/xQGP9iJByP73i3pE8Z21QOT3+Qf+O09IHa/G3pzngDnzbD2/SOdzicyr+wQ/FPhOttTt+KeCQ093jtPjS+4535thRL9unn3F3Ch+fJW/qHn0fdhXdqPKQvlrAmfFKHd/rKR68/EklM8H5bDuGeZ8/dyH/h2/yjrmvyCw+H8EUIr6/JZS2f/SmEc2dzeO+twbvibnib3vGWw6n8CzuE6sd4S2H70ZmLwzNfPbJo7Hb1Tvfm6/Ea59XjnLtL+PA8eUv/8POou/BmT6TPV6ikfztchfda8XGD8njxCQ9fbskv7c+/C/Kh3LuheOFMOX/3m5QcT5/y8F0IXxfwHizgTf8U4mDbd7ylOHa76cO7B26nT5Qorck/rWHWJ6pdrN7p3nytBuO8epxzdwkfnidv6R9+HnUZ3o/CxHT2XPqjfAHvz+tC2PTkic9uPFr9TLPpr4/dH3kcfDf++GyNvHuKN6QjT64Nk4+G8EL2fQhfvp/D+1kU89H0F2ZDoXzkvWZ4TzRjGm+z+FjDYPrIwuDt4uMUqRze0ZsNH3C4Ur3Tvfmea8Z59Tjn7hI+PE/e0j/8POoyvHdWhM+n14fzNXiPhvLZ/BN4H63/c+Lsxqur8z/sX4+ojhQ4PpK+ksLL2bawKyq76db1EF7bkH+px+vF13jckL+X/U3+xnUG3hfCuqkN+b9vy98yx9tcV2d0d5Y+byKkr2OW3i+XwiNZ9HfnSNg2Fi/dqt6V3nytBuO8epxzdwkfnidv6R9+HnUZ3uyx8PTFMHanBu/W2hdgTJ+UkN0+frz4XhPRu4vxQkR37/SXz6Rrro/yXSiuWAprn10RBod3xPe43++NPx+vcPWl+B52/YZQej4MfxzK34bwc5btD+uyymgIG/ffG8K9n8TbzOFdtSn99dp9D3yZf6H0Uu2jCeduP5Z/RCI3vPahhm8b4N0x81Cs+zfOq8c5d5fw4Xnylv7h51G34T0fVh/Lvwd7Ae+94YX8F6/lX0Bnejy+q019Hf+wHy9sj29siwvpowIjd4orbs+/mmPp80p8e3sqfXggfZGc6dfyf9k2eC6s+SyETxK83w+mr11eKT6u+8hP6WYa3vGGkdsFvD8XF1fcmR67+0MNVxoG9s88FOv+jfPqcc7dJXx4nrylf/h51G1474yF0XAmq8F7MGxKf6r/blv6u7Es2xlWpq+Ee20yfSi46ULjFa+efuXYUNh2tfLK65NhxdXscv7+9tq7Lz0Xyu+E+6KkD0ejf9payr9pxGQYefLU5eJm1qVPHDv08ql90dGn0i+tDqXp4kO7j2fZuvSpZhvfOVcOpTvVOz19rd5NyaN8aXLygmFJ1ycnHzGMZycnJz/sfK3W7Znc2flKrTs3OXnCMv/45ORPhvGvJiePWQ7/q8nJrw3jP05OPtH5Wq17fXLyvGF8enJyr+XwpyYn37bMH5qcvG4Y/2Jy8qXO12rds5OTlwzj309OPm05/PHJyU8t87PrNrzZoyGMpk/WKuD9LH3c4Fd7y8XHDfK3p5v2PTgcSmez5guzrpi9EUL5gV0rQng3S/C+fTx9+Z1PQ/lw2JtFVjc8uW8sHM/hbbyZdWFrNHbL/ji38VaCd20Ut/go8u6Xi79cu//B9Nb5U+2jfDjkv61ou9r4WWuKns//jKBvJJQs42+G4nveadtU/7OGpo/zr9esb2+ofRUnVd83fuaLoqdDOGkYn45nluXwvwnB9NvWmvz9j7oPQ/VfTyl7MH3nRH0XGz9RX9FjIXxgmZ9d1+E9W/1KCNVPJ3sz/7jB1q/Txw0+zrLTxXeb3HA6XaXpwqwrZu/kX0x35XvTObzPpG/tk+AdCyeyq+krNoTR9y8X3yat4WbWpW8pXPT69QRv+mBD9XMb7ru/9ktD41fVjxJ4LfPAaxgHXuCdR1dPv/Lal1HPyisn09N2+5OTL7/zRfVfrzVdmHXF7NaZ469/cqN6KxeHwr6LU9c+ui9M3IwvwQtvvvz+jZlD1G+m8WO8F9Jf1MU3ucfPP5P+xm3NYFg3FMJjL78Tn0H9n3eB1zIPvIZx4AXehe+tUvHVb8Y+b3etWfB+mP5yLf+mxPkHG66sCKPxve7a4pu56QJeyzzwGsaBF3j70LePbBoe3fx8p/eqp3JVL4eQvkd89vXTBTTHo9qbdxYfMY7vg3nHqwx4LYcHXsvhgXdR1wxvdiEM5v9t+Igx8OoDXsvhgddyeOBdkjV9xNgQ8FrmgdcwDrzAu3wDXss88BrGgRd4l2/Aa5kHXsM48ALv8g14LfPAaxgHXuBdvgGvZR54DePAC7zLt5vXrt3pfK2WTV+7Zvn37tmta9dud75W665fu2YZv33t2q3O12rdjWvXpg3jd4RfUKNV8cmb6nytlsUnz/TXs9Ynz/jasT551/v75N2wPXlT9ifPcuLfFfASES1wwEtEtMABLxHRAge8REQLHPASES1wwEtEtMABLxHRAge8fan4NnLZ5yEIrvx1CPXPgLw8z09jLw5R3ITscIoaDzKf5vtgZnUk/0Z+dzV9+oEQ1u+d+f5mXx0I4Z6jjZ/A/GHz9177sOW3YiseUocH1vJRzLp/8WZeCg80Pwn57KwbmAqhMsetHQ/x5zttrGl2jhdO/lOdXwdN17g2+Orc9yjvTPM/iimO2eKZqd/ia3ffwVbNulJtVlTbAxS70p0Ustk2vw68fUkD7zsvfJZ1Bd7ihpTNOTw3vJ2P0xN47zxU/VL4h4p/rnCy+D7UE9/Vr7Kr+Zvu5RfnvLcu4G184QjgTVdvusZ74fKc96i4XQG8d632veqI4BXzzgsnm6/0Xot//Bhn7x5fHPDO9dIC3r5UPX++GBsTXLn66pkMv87mb1VxiOImqocrbkjZnMONB+lw1aZ6Au+zIWweGX3//vwbTcf3u6WwOYQjI2HjzD98+qzUBG9xcc572wN4m5/zhYC38YWT/1T7l126etM1Ht409z0qbvdsZ3jvWu3Dm5ruYOsrpp863Hyl2uwc9+bucQG8snNQN9vmhAPevjQvcUzwNt1EUffhneMgouP0At5rw+FAInbqoVD6PktvZ9dei2fJx7UvlDB95eUVDd9meubiQsE7x+xCw9u+2Yu4M/Z8O3hn3aIE3niLTXew5RWzu+GdmZ3j3qjg1TWvWeBdNAFvXi/gjX8y/SH/wU+l8F7+/yfys+TBsCP97Gf5d7Oegbd+EXirzV7Ep+GLLsMbb7HpDra8YnY3vDOzc9wb4F2e3XpxY3nVI5enqk/2tRe3jg2t3flB/ifcy2E8q+wdL9/75nT2+e4V5RB++uHx1UP5H9PSr/24f6RUGt37RfWGNgwODQ2tDSH/qij5q+fRHIht+fkTJ8vrHqn+AW/qjW2jI5t/fTO/mU82DIbS+OQHn+5eMbzlV2F1dvmB2odfV5XXTaYf125o1h28lK68Z/jIh6H0c3FxU1gzfCT90mcHJsrrDuZ3rcXwhTk+xlu/auMNNN7h7O4H09DuMJn+c2c4DOdfnWRH2J6OunEolIbvLz5mdiTct608ODi09Y2p+u0eDeur92d9eOrZ9J2lT+dnyfFQuh7vyNDg0Mhokjbf+uFVpXg5XmzxwBrgrS4mS19j7XDtTh4JL0y/uyWEra/kj+LdMFI88/GpizfxdDg4/dbWkdG1a/MHXMCb7tutHWHl+w9tKK/Zel+84t4H4//tP7C6vGbjmvL4xo1jIWzcVt1Y/qA2PbC2vHL/01V4HwjDq9LGqlut/ufqs+vidS5cDWGk+d43v3BWhvDwlXgXpk7uiIcZKo+Pldc/9kN2Ye94qVQaKg+tmcivHre2Jz35V59dHV9QEwdqzHz2YLlUGtl6Zrr+/J4J4fiOFeU1j+4fK5UGN7xWhXdyeznEV/QzU7Ur/nh4TX6o2DMrqx/1qYQwWh4bL9+zaVO8hVX5Fe+NL6f9q0qhtHLvjvHiw/Mhvphfm4ovo5GwYv3IttGx+9/6Lj17++IdHVy988z0u2G09j1ut13YHF8hQ8NDExOjw1uOhvBkWHH/SHwQ8X5PpoWmB14aHSwPD62Pj2rqZHz21jz+bbovg6NxcHB06Eg6Q/MjZhfik7Rq1Yqh4tWbVr1mw+q05/iSuvDGtuEQ8tfx6TBYvGbeDesazqXidVh9/LNeP8DbtX7amG947ELhzzcT1ZfCwfQ1neJpfnYov/jy26X8vw/l3wYujHyffu272gvnuemZG8qvlGbz8+dIVHp09Z50/nwyMxm7fn9xzbVX4s28Hppb/cPqkJ776UdrPzM9c0Oz7uCl4spHbg2Ht/OL+WkQz73pow13rcXwXPDOXLXpBhrvcHbXg2nsNwW4X4biywFGgF+qHzUcTbf15MwD3X5j5nZHx/ZX78+6MJz/zODbyY2LITxSvfbhKryX7ymOHS+2eGAN8FYXk2XfhjDzra6PhGNPNOy7nMM7cxPrw4HH6r+49lwN3jt7w+jjQdBz1+6vX0gvmwRvtaHmq5aL64zdde/neOGcDmFH4+zo042XSnEh+Y0fyb4en/nZ9BzMPJNJjtrtnrnrXufw1lp9PV0xDD5Y7Ho0Pc/rHy22d33zXA/65LG5Hlk4crTxJx+cefbSvXk3jMWDlNJ3It9cmnVzjc9PeO76jqZffK96cfDkNytnfvKB6hn6TNZ4T56bargD6SV1b/HD+Dr+pramg+/U4M3PpeJ1WF3UrNcP8Har6QdC6dlPPjocVucvvXhx5NefXzyzM4RzWSKmPLr106tnJsLg4PpzV9+Jz9LY21dOxf88FH9tLL6Gdr6Rv0SO5zcUhh/dH9LTmWZn/4lxxYq3r1x+Lk3Gw+yJT/DHXxwrh23fhfJgGH7u5ZXpFH3x6sfrQlj5YHp5ZNmr6TX21Xub0s3XbmjWHbwUJh4M9x85n+0L+/OL8beCdDHN7jv91Xvbitm5h+eCd+ZPWM030HCHp2c/mKa+CfkfKtNd/01xiEo8ajwtfvPqvfmesun4vjKsPPJoUuJQ0+3m9+dSOn0evy/cUxpK8F5P263ekQLesfvGTl65/EIpNHyoYdYDa/xQQ7GYLHsx3DPz5RGPhLVh9fPxRAzh0fQoErzpJh4Kq9NNxCXe85vczl3xjt1bg/dQGP5NCLvPFWfyyGChy85V+cBQqXib91q6o/G34CNnEgnrzx3J4f0uXafYWP5g1oSwKf7nvvRQPzz/dLrOW7PufdML51yhViwebXAw+b06Z6a8t7AjWXgkvfTik38j/bZ9b3ggiXak+lxsee3lDcXCqreb4N1/6ssk/sG3H0q3FY+5P93ivmfS70Bb0hXru34ovbZOF2fMnvyI64rfQrbk/7+n+pvWtvz3mfDyRP4bzpX4Yo7/2bcnpN86nnpzazp97ou/YQ4eiq+AEJ6P3uUfagjloXxpqXhOpTNodRgsXLx/XfHw9o7lt7k7PWkr89+CXpvIGR0sx9+1k6rpDI1HHIyn5+4n8iv9Kj4XcUH73s15fvxIqfid6bX0xG2bii/LoeI182wV3uq5VJwX1UU1v36At1t9EML76b+vFy+9H0N4J128syH/8tPxZb/hdnGtldfyi+lbzV9Ir4/8QjgWn4yn4lu0kZ8/SBffKW4on519/pTzT4x6Mk5m2fnq3xm9G8Kp6twHyYE491m8WHrni/jc/zwcap9ONvJz7YZm3cFL6coJlHfC8K38YtidLsbZdNeyqYP57NzD7eCddQMNd/jC7AfT1PREeDn+50CkLX3181fCiqkfq3uKR023dT6dtb/NbyqENxpvN92f29sTQtnWcCAtppK+jvjMHSngDUPfpomnGuGd9cAa4S0Wk/6keHTmTsZ3dmuupEcRf7O8kt6BjxQ3kf7Ime5lvH/xXp7YFcLF/F4W8IbBc0+HzVNxM89HE8rfRoDKB9PvdDvSM5ju7mPp8PkdPZm9EM/09KDS+/UvIzRDaWM/D4bR6Xy5YThuNb41K/+cHzr/oEDTvW964XydbiwJn2gMQxNhXfWH7zwd7p2IUj03keAN6c9G6cjh2MtDN9M9ikdJB9s8lf+1ZXh25nZfiW8qp9OXyB9KH6m5MJgfM/4Wv+KbTZS4AAAce0lEQVSHLLuVjvRZgndm16vjxFDxMjlfSD8V7/yBdMXH4+8iv/5hTfrJZ75LL+KxsC2+mIfTLX6WP3vpju2KT/2tXekWD6V1PxUmJsK+GXiTy+XwUJredrD6J57Uc7tC6fKB/KaPFQ98W36+hGfSCVIcNL7SQinBn87QdMSHwuaf4qv35kQ4lj8Xx6bjRt5Mr+N89mR6ncWn9WzIn/e09X1VeKvnUhO8za8f4O1Wu6p/b5Leh8UX1qU9e4qX16HwZJa/7PMTOp4aLxUXw6kC3nJ+YV36Y/XZ9JvuB7vClnw2f0OXZmefP/kHXrPTcTK9tdicv/2aXh3iC2rznoL8zWluKv6u/HD+3L+afve/WRzug9oNzbqDl9KVU9cGw9kC3q/SxVeLuxZ/vpx/Cf45h9vBO+sGGu7wa7MfTHOPhN05vyfC+HT67hEHs0ubwto7xVEH423tL373SjeV/ljfcLvx/vw2ubs9vcyfyHbmGg2HFTN3pID3yfzi2UZ4Zz2wRniLxaQ/KX41cx+PJNvTo7hcis/r6fwETDeRf6zvUH7/0gOOv/p8fi8LeEvvZ7vDoXwzr6cNVOJvcqfju7Dtp8NgPHwE+0J++GulsGY6Wxe25w8q/eVa+gDFkeJpyTf2alg7lLaa3hB+kA69svho7KFWL5z4U++lDySs2JveGD55Ir3zjW/qVu+5Ge/RqeM7wpOn1hfwZulW4z3cvitLC4w3/2qELP8mEteGwnMztxsNjKZuDKWXQ/gufWg+fYuW+MY0/3P1qSPpm4ZMhvquB7Ms3WKWv3bTb02Hsnj8V05tCytunkh3Mf5f/GG8t4ePx98SP09vfuOjmCqFVXfSujflL6O40PDk7rTueIunjj/bAO+Kl8O6K/Go8Xepcqh+jDg+jPQEpSd+5GZ645se+Hc78yPlr90T+WHiI3g4PWnpDE2nz5ZwKH/1njp+Nj378Q7E56J4HcfZ9fmfrOJT86s924qP7R+Kf5ZY13guNcHb/PoB3m61qvZ9XV5o8mdqSw3eb9LF2yGcz+aAN/+U0wthcFs42nhDc54/H+W/+mk686bHw6vFlSvnP6ofYl0+tyJhn577feHADLxHZ/8la/UOXqr+zpB++fH84kQO2b7irsW25b9TzzncDt7mG2i8w5dmPZhZvRtGp7IrYdWNUriUTa9IW6neVjzqqnA03lQYvVPc1Pb4R76G270Qir9t+SCJ8HR2KteoHO6r3vKWKrzFN3G6EOb4rIbqA2v6rIZ8MfFPihvq34jhSBi+XTyK3fFc+7R455Pf93XpJuL9Kx7w7vjHzMobObzpTfKd+EZt5PTe+Gjy2fh/Bz5Nd7dYQ/yD9IX88NND4cHsVnoY6UEdryLyUfG05FeNC0lbvZV+48nfhxcPteneN71w4k+dT/AeHg+/igu4NRheOP9++rDvVLpHt9PcZA3eW+l1+XPpjfxW483vC5vSFWe9FO7J/4J4KNwbb+vt9EyGR7Msbr/4+71sLKzP4a3tejDLbzHLX7vpYy0jpzeGvZfi83Q4u1WKa7qVPgwwlZ8v8Rbfyv+IfzMdYFf++9xrxcHjnw3ORJfLU+kW83XX4D0cdxJPgQ/jvdmWPoKTf4j4qSx/giKuW9Kjyh/42+lRHS5eu/FifOd+Jv52kT7iUfybx/H05nrrzKt3RdhcPBf5Hfgg/yZYaTY9NR/nz3vc+gy879ReWvUTofn1A7xd6mb6M1XeOzV/pq989PojK0MN3t+mn7ud/tA4B7yjq2MrQ6kcHs1vKM0+0ALey/mt5yfp1eKDeXn5IeJc+khcDd7iT93r098fTaTbD+m5nyGm8Q5eKu5Ylj7EsWo6XXw8v7S+uGuxcv4zcw63g7f5Bhrv8OwHM6ufkiHvhYey++K7ym/yTxKLt7VqfGx4MP1J8vF4U+kDiHnPhqbbfTu9l3kt/41oR3Tgm1yjUijP3JEC3vz3qbvgbXxgTfDmi4lvoV+oH+hI2Fh9FM/GP2jPwDv9ahhPNxHvX/GAn41nbfHpZPlvCMezb8vpz+bDE/GP2KtWr6rC+01aw/SVlfnHIEdWr45/7N2V3iEV9zPBmz7webl4WkIpPpL0t/XxmqvSjeXPV3yor8+6900vnBzewXRHkmnfZGvC83EB8WbvOZBvNTxWh/fb9LpcEe/f6vwDAfGYw+mvr0bGJxpeCtP5Z+ZMpQ/S///tnYlTXfd1x3+1Hdd27WY6rpPYSdoknUmTaTtTNzOWXTdJ25kuTpppmqRN12mn6bjLTD2d9vcWHjsCGbEIgbVYFqAVCT0hyYAEDxBoR7YQEkII0ANsCyQkFonl3T+g55zf7648QJGen5De+c5IvOX+zj2/c8/93N/9LfehLdzBegIvbYgeZhJ4zVj7gZJquh9EpkNzsfY2mGnHm5IN2IIBb/bQ+ZKPaK6mWvhlWl5eCKNFO4fvP/oYdr16hxe87ZhwUmb7ZXoQLzF43yh9fr+PqifXY61UxT/CrXXu5staOCyS+pD1iQBXTHQugLUA+WQgj44WOXCFfvxQgxXAm6ZyxgLvoJla9ongzh8Gb4IER1EPzPeqdJ86QPMCgll3BV5bcOs2pssuAl41K4VYdU1K6zEDSBJdLsME7y069lkO89usPHA7+AluTBrHUa0L5tC9p2z8wkuB123A6bC3Ml4VyzYjDP8OADuPI+GMTKctHGfaqjfF/nDL7nyLH5tqPVLexj7iShxXi2LkHeqzjogHvO6KucBLgYHz9hPbxTq5WdcCzioTvLYJ8E9VuAPwo8BL7Ey/ZVwtdflTieC9DWGwjrzSZkNVw1DgbX6HbuzdUXUcnal9coH33nm8BN4Oat+NGxXQogMaFltW/FVlJnh7PObjpgKG9TpG+BDZwh2sxbsLWwECrxlrv7GtRMUOIgPtxj6KQxBa8F3YPC4zDHMix7tRsLjXBK/PvfPDaFFN4vFVRZ3g7XK6GaAuBKfKqVZUcRxu7dK5W0HdHuqgWeA95zlIDgeiEieJa7BOVZtlLfDeMlPLPhHc+cPgTZBGpBxRr7opUSbXSFlUe/zK7d13BV66T6bbJjB0RZWFs3Q58I45fnoVvsEx7lpIx/dM8E7Ssc/FhsMdTx54HPzEnplfJt/HX8RVb3PNW3ituIWXAq/bwJjrt2KXBu9B4FYJbN4F2bwTOygn/c69gim4E1eKSNuumjtHk0Qh5GH5DmZ8FBvQdXqLW4uD11Mx9wIKDMwRq5WNqsOfrqVaRGSBBi+ayJPZaAL8UxWOyFwTvDQHogbcHE5XI/dqAUUf4gD/k0VBmldcq4MVNf2kBRQ9uvswV3U16OCa2+CuZZXH+7jgBWNdWKhU7se0g2YhtmZ92FL1meAFq7I1vcEwVABpZ7HhxnJsGneadmNBavH65F6yhTsowl+zXqM33AY1d4F3jiyqVOgEB2NDAYyDD+/O07G1XCJlUyMSz99ZKvfZ4N2Nv9OcZ+UGWOyVwUa8ZPj3OMB7Btycpc6a/UhyNevrqEEHKBaSZ6IKvPD1uDT74vAiL6lT4/puJ3ixOyRfVxdrbx0LY4B6E1RZjLpP5cwGE7yTZmrZJ4I7fxi8CdK4da97jBLlkAxeoL7AuwMvDlYo8I5jqlHZY8uDd5rMoKbHccYrlptdAN5iWbMQvB4HHeCNyEK8lVVvi5VrluIWXgq8bgNOhyeXAe8lmTntC87hPenN1RjdQ3pis9orNlgKtKld0rZ7kMag4HygRjvc3M/3IzcumgM8S4LXUzE3eDEwRbLF4WIdApVqsVdu0uBFE414Au5G/1SF98p1xvQlBO/6QZw14ItSZA4czUEvTPD299ERBApGzRqeU9XAYJkr13RZipgO7qS+PzkkA2pwbWnwwkYN1OgdhxxpGO8B6sFubx/Ng2/K82iesw6g3E7XMwqgdSRxw4xZ024+9fEGofqZ+H6YroZZMkNvGICau8Dba14hpwn/d9BuXRPs9TD2J2yitG1Cb3NlRqY8bHc1VOJwXJYO/HYF3hD2k+TJoAO8TeAmnmXkTYaaUoaO4wGCXTVNKvDC1/24tc5dGoeD8E+6wYt11tXF2k9aU7jhAtii8n56PAyVDKmcWbckeJ35w+BNkGLZ5iyjHZQoZebypuq7Ai9dBiEtN1YMZkPKhbWh5cBrrDGbcVsljseG1S42usFbg/dRCrwVV01DHgcd4IWX56X5tsZs4c1sxLLxCy8FXo8Bh8PhZcA7E5RtODHBWAtnaIBiqm1VyzywhQ2NUWUqXWaYdjfD2UT+QPOmnmYFDRxBbtRZPcIzFYuD11MxN3hVYG44XKzD7kKsxTyOZyI3Y2SiCk/AavIPKzxfAN/iRFk1q2Ea2lEtoxSZD7FH/yMpL/UB/er76AhCay9Ku59Jk9tVNTBYJnhleQyjShGrkSUYVdgmH4NbhjfWUY/3ccG7aQ0OJoyP4K14Jew6PNvaOjqACTcgKZNUAGU2dktCM02WXIWd5bVSvGfW0e2dGTEEb47MHKGmB3jZYMzm6K5otFjlBu/+HHNscg3uqHkUAxMewK5hXONC7exN6C3mIP6nwBvEiyw0hj+iNJoH3I+27oVwg0XciQ3eTRDWWWpMd22sMNcllRp4gGY2+GUZ1ooqfvEI7YlyZYQmNyN4qx3g3dU6StkLOxiZyQVq0rEgB47QnQeW3SpzIILBGEW9YEnwOvOHwZso1chMOjtvBvRl/DB9PJVzd328OJKKoxyh2Rq4+B7WhpYF7wGZTsuKJ0IAKWo14C4y3eClFFbgDc3aLVGXgw7wAuhyLfCeNwd526ls/MJLgddjwOHw2WXACwZykZ1GLfzdaKj7wR61V7R1QMdnAk+latNuQObMK3+qZMaUMZctwzjHaq5A2o4sDl5PxTzPasDAuB62UIdj+FiLThzvxlbrdTQx5ocTEL0EI1jh01L2kpd6yfAJeBmhyHTj5KJG6mXwy4xuPIJ3oJkWod2Do1ApqMY1DFazCV6cQ3ce+07pD0W1Sv0pxlHUqMf7uOAF5sGm4/B/CFuV8jDcVEeG0WH4r0aBl+br4dSvOxDAtFnaWcQM4HXT7h7ibSVcD2Q67C0PxzpwxG2LoTyAb53g9RXsMYN3AF0Ai00QF9xwaCfOW8fmhhzCORjwN33SBC8gtCcGkdlNaYSTom9gW/Y6gHfYBV48D7pxqCS9VYbMhXyyBw9QO5nGWkHF02/RYoghypWduLQYwTua4wBvuoxQ9sIOrrdT+mBKoQMYkdA0pg4c1tV4DbtOUfctCV5n/jB4E6URv6yYAlwiHWbwXqgIp0tfgyYIPi9kGfC+LbP6FHj3oSFZOKMMUVnr/AkbC8A7GpTrJ+C2bYvMxK4G3OesWc4C7/xaBd5WNW1NGfI46ARvPeWqegtl0TWjO6gm1sQtvBh4wwsNOByeWA68LeAFTn3s1Gf8drinBFu4V7Q1iqPUzTEw5ZOl1yy7sqTjII7tdwCYi28Ar7An9eoB6V9jORIfvHEq5gEvBqbD6SH2hjZek/J0EGcYI3h3zG2XhevgBLymRnWawbG3A7J0agtOaNDgnYemW3Y/RCazCE5ddGiyT4/AF93AwSU/7r4b73/XT/Tj3LjMicl8Dd4imXsHm3w+cHp+taTlJRG4pb6hSAngdXvvShwLvDn4Xxh3mYmr2QpmNsusImyfAr12aPDivXioz5hEj6rpSMqMfhVAnGuo7J4FWyPGGAb5kDFfrjINV/PuiRmTuHos5gavnlimUgGU3QNf56ynlcrgEYbYJ/Mu4DMpwCIk8yayCJTNOiUpNPtiXVhyHOfh7uiX/neId+AN7idT5hWo7oUqSDgF3rfhuhGQBV1+nESRh1NegJRhNYiXB8kVq1cbwfHDJYAWeItldh9kbzc0AM4HwXJWH0QkH8xSRODQDOICuMxKvKHcMacOeHzwhu0TS+cPgzdhghZJ8J2KgK9ephn0kNeCgw1bg2kbZLBubDnwXoSTsrQK7p2LZ8iQDOb6fX5IMiyrz59qmbEnsoBVx3DZ1LvA2E7s/sN9vofLL7GcBV4jCjldUqUvCdqQx0EneKM09q7fRsm1YuXaIoXjg1dt6jVgO7zc4JoxBA7jIqIbUk06h72CXxk4M8gXHjOMjegnrnuV6cO2XZd8Jet9eDbCqdFiObI2HnjjVswDXgzMLaeHdbIwJOnsDl7BWuA1c6sPl6CF0IQsDMhMHC73l2fSyJoGLy3EkkUbaH4/rXCdxAkNUs15WE03yD6gRzGuk6hA4uaXB5C/CF5ozsFtADaaqTLWH19JOZGlxuO9K3FM8PrVwB463IkBkIE8e3AtXYOX7ilkiLbEvs0orgRLp20uWHZxybCveAt85Qtm06Z3qAtWqsdJ+Aepz0XW61j7gjNW9I5ZRwmJ5dNeFZqrHgCDM7N65RpgkJahBfGxD3n0dzyKG9KnNcA78AYDVU0z7NQXxTMZNOCcjhv6cMuic/A15UgoICvWYvL4qBu4EMtAuxcPml7RDLcAUG4NlQUjxf2YPjh6mbYeyuKq5SA9a6LzCl0zQuqEzTcWglefCK78YfAmTLF2PLRpZy9S8I0TlL5lw1E4pL3LgXd8SD0vhA5LrD2gL9Q5VFafP3int34hq85QHmWfjcE3LbpP6zSVs8FrfGCmsmEZ8jjoBG8sD5sb5lvt2i6VMXELxwev3tRjwHZ4WfDGsmkSGQ7gZMfsmCr10vIF9bowatuVDm0MWB8FW2OWIyPxwBu3Yh7wQmA2uzysk5UDtNw0v0/VYrO1bzAB/7dY/mSfHbLBC2RyzI+qVOCNNVnIyTcjdsa+khRq8E5Cw3/M6NMG3itSm75PVS2K470rcUzw9uRbbmE3qXMK1nY7U2KrtZfZ6ulkQ7rUmi77+HbjHA6U2jRXPyRHH6lQj96w1Iz1e47wNcmFypruMn3bOW2oSYAE3hZ19EIUn7N49LrUY3J8B0YBvOdVmVKrZhi+DPfjgLbdMuyvt0yVSL9+u3P6BNmVfRg59dtCWfKc5QkZG7Kf6bNlqkIesfLYTEs0kWssBK95Ijjzh8GbQE11Np+eNM7oFVITXS3tV4EX0ZZTd/HQ2djVjsi5UdPQsR3bmq+elutcZYfbWnvilJzpbu24rKZ6Lr5Pl3ltaNGNZzPMxXMLyy5b2CHTYbcBl8M/pya6IgcPNp8bNfc60x3ZszfSF1vM7tTZSHs0NnKsuXMyjiNxvV2qYp7AEHiNuQstbZfm9AexwRORD8YcJma7Wo72nI9T4dnLpyJn+gdcDoG7zS0RKBu7emjLvqtWpa5TNTwGdGXMOqmqxvU+XuLMXT56eH+D6dZsV3jLzuOXTkWO7Ds5aW8+4WvrDFeHP7Q8jPXvr97ZOjDvsAtAv3n5aPOpG3faKjfXDFrV660vK9nSGfM4MOE77vQCatfWdixy5kovWBi9fDS8vaEHQ3Ni787akzc8ZW/53pZlo85wz/Y2VG07MmV5cwy3hZo1NRzRYdUHqLW9buvOjlFd8eb2diuec+S7schxx4N0+mS7NkahjlrHws43SMsD9c0f3F7sZDDr4MgfBm+i1NV6Wb0IW9P6H7Che/dABqYfzJ5XuBYEpo56WFNao45bpU9bP3+4V9YBcuQPgzdRapCl1BCYzpDHl9s2OYbuVbENKypbV44WBmZlndcPREMM3ruVM38YvInSSEBWjsxPXVqHg84rwtC9qf/Dvea8K5ZT8QKzos7rB6H5iRqZNr/8donRQw1ed/4weBOmk/oxHBn9y2+bHEP3JHrmqbc/kRU/MCvovH4wwuGxXUnb20MNXnf+MHgTp493FaWll9TfWn7LZBm6Fx3PzQ4/iJb2ile8wKyg8/rBqCW4pj552fJQg9edPwxeFovFSrIYvCwWi5VkMXhZLBYryWLwslgsVpLF4GWlgqQQ4pddi8cG4BOhfnZRePQNw6j1fibEq4YREeKrThs/ESLDfnc+6ztffebZ3/hu1nn7s2mr+BNffDV00WCxSAxeVioIwSv2OD9ZnWDw9vzA3vQvLMJOu0w8/ubNT7merIdEDF5WKojA+2PnJ6+4wPvKHzj0d4bRpl9+U4hn9cufLQne6ifR3kvf+r0X8e+T5iQmBO+rWPr13/oV/OLlxZ4UwUotMXhZqSAC77NT9gfU02CDd3iRctDy/V373eLgLcGujDR6yEZP8Dl4U6Q+R/BeVy/nO34Ib1bNGSwWg5eVEgLw/rYQO+wPVgvxO4kD79EnhPh9y8bQq0I8oR547QAvaNNjQqy+r3qwHhExeFmpIADv/31G/KX9wSvi8z9LGHjvfEWI1xyPiplYJcTX6IHfbvCiG8/zg99YDF5WagiIl/9n4mlrFfagEP/6ZsLAu0GI5644v+h9Rgh64rcHvNMvmvtkpbYYvKxUEIJ3sxDWwv18IZoSB95vCvG/7nJv6XIe8Br/LZzNblbKisHLSgUheMefFN83378ivjCXMPD2C/H4kLtcn7bpBW+jEF++j2qwHhUxeFmpIASv8T3xi+pn1rCn4d+MhIF3oxAvewt+Q4htxkLwjnres1JUDF5WKojAu1UI/VuD+UJEXOB1zeM9YpdbAN6nnBu+oMD7H4hxj/5JiLeMheA1nhLiUsJrx3roxOBlpYIIvDefEn+q3q4SL867wOvSdrvcAvB6heD9GyGyvTsMCvGPRhzwfk6IB/ODTqwVJQYvKxVE4DV+ID4zhu8GhXjTSBx4/0SIcu8Oi4T4nhEfvCc+hfqxHjIxeFmpIAXeaiEq8F2+EC3GvfXxfs75re7jfUOIUm9BAO8bRhzwPi1E7/1UhPVoiMHLSgUp8E48I/4I360SL80nELz/IETIW9AvxL8YC8E7Bu9v3FdNWI+EGLysVJACr/FD8fgn1NPw70YCwfs/Qvytt+BPhfAbcaeT/fp9VYT1aIjBy0oFafDuoE6BfCHajASCt0aIr3kLfkWIWmMheN8S4q/uqyKsR0MMXlYqSIN36pfEt7Gn4UvzRgLBO/YLQpxylzspxNP4LDQPeG+/qJcSs1JcDF5WKkiD1/iReGx4UIj/xNcJA6/xx0L81F3uJ2pszQtenxDP3zZYLAYvKxVkgrdGiMJ8IdrxdeLA2wgWGp1fvC/0PtzgffcxIQrusyasR0IMXlYqyATv9HPitVXiyzF8nTjwxv5QiC902593fd58Fo4DvLFTP4Y3r/GD0FkGg5eVGjLBa/w1rnr4L3rpBO9r33XKfmD63YHXGH5BiBdq9aexml8V4qUBeo3gfR1NfuflF3DP3xr7VKrHetjE4GWlgizw0q9Yql+HWHTlmt5Ub3434DXan4di3y7vvnmzu+x1ePnZs+pz/rFLVlwxeFmpIAu8tz8rxK9RT0NCwWt0f91p4DfP6I8dP+/+0qog/7w7S4vBy0oFfVBZqftgGysrW9Wrk5WVfcuVu3b4sOPRCh9XVu52fttWWXnOfD1T9EWTsV/KmTJYrKXE4GWxEqPY8bR/fuPP/z7UOvugPWGteDF4WSwWK8li8LJYLFaSxeBlsVisJIvBy2KxWEkWg5fFYrGSLAYvi8ViJVkMXhaLxUqyGLwsFouVZDF4WSwWK8li8LJYLFaSxeBlsVisJIvBy2KxWEkWg5fFYrGSLAYvi8ViJVkMXhaLxUqyGLwsFouVZDF4WSwWK8li8LJYLFaSxeBlsVisJIvBy2KxWEkWg5fFYrGSLAYvi8ViJVkMXhaLxUqyGLwsFouVZDF4WSwWK8li8LJYLFaSxeBlsVisJIvBy2KxWEnW/wOnj0vKUSS3jwAAAABJRU5ErkJggg==" title="plot of chunk ggplot2" alt="plot of chunk ggplot2" width="1000px" /></p>
+
+</body>
+
+</html>
+
