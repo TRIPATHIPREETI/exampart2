@@ -1,0 +1,32 @@
+\documentclass{article}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\section{Scatter Plot}
+<<fig=TRUE,echo=FALSE,results=hide>>=
+source("question3firstfile.R")
+scatterplot1 + ggtitle("Miles / Steps")
+@
+The first graph has miles on the x axis while steps on the Y axis.
+
+
+<<echo=FALSE,results=hide>>=
+library(RCurl)
+library(foreign)
+library(devtools)
+scatter <- getURL("https://github.com/TRIPATHIPREETI/exampart2/blob/master/question3secondfile.R",header=TRUE)
+@
+
+<<fig=TRUE,echo=FALSE,results=hide>>=
+library(ggplot2)
+scatterplot2<-ggplot(fits1, aes(x=Steps, y=Miles)) +
+  geom_point(shape=1)      # Use hollow circles
+scatterplot2  
+@
+
+
+In the second graph it shows that steps are on X axis while Miles are on Y axis.
+
+Though both of the scatter plots are mirror image of each other.
+
+\end{document}
