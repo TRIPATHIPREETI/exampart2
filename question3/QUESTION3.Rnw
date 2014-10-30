@@ -1,0 +1,21 @@
+\documentclass{article}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+<<fig=TRUE>>=
+source("question3firstfile.R")
+scatterplot1 + ggtitle("Miles / Steps")
+@
+
+<<fig=TRUE>>=
+library(RCurl)
+library(foreign)
+library(ggplot2)
+scatter<- getURL("https://github.com/TRIPATHIPREETI/exampart2/blob/master/question3secondfile(1).R",header=TRUE)
+scatter
+
+@
+
+
+\end{document}
