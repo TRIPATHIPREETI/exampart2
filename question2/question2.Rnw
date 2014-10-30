@@ -1,0 +1,15 @@
+\documentclass{article}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+<<echo=FALSE,results=hide>>=
+library(RCurl)
+library(foreign)
+data <- getURL("https://raw.githubusercontent.com/jrwolf/IT497/master/spendingdata.txt",fill=TRUE,header=TRUE,sep=",",skip=33)
+data
+@
+
+\section{Cash is the most used retail payment instrument}
+By value, cash accounts for a relatively small share of total consumer transaction activity at \texttt{14} percent, while electronic methods make up \texttt{27} percent and checks \texttt{19} percent. These findings suggest that although consumers do not use electronic methods or checks very often, when they do, it tends to be for much higher-value transactions. In contrast, cash is used quite often, but primarily for low-value transactions.In fact, the average value of a cash transaction is only \verb|$21|, compared with \verb|$168| for checks and \verb|$44| for debit cards
+
+\end{document}
