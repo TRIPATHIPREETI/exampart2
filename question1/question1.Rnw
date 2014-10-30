@@ -1,0 +1,16 @@
+\documentclass{article}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+<<echo=FALSE,results=hide>>=
+# Reading the data
+df<-read.table("http://www.itk.ilstu.edu/faculty/jrwolf/spendingdata.txt", fill=TRUE, header=TRUE, sep=",", skip=31)
+df
+@
+
+\section{Cash is the most used retail payment instrument}
+In October 2012, the average American consumer had \texttt{59} transactions, including purchases and bill payments, and \texttt{23} of these \texttt{59} payments involved cash. At \texttt{40} percent, cash makes up the single largest share of consumer transaction activity, followed by debit cards at \texttt{25} percent, and credit cards at \texttt{17} percent. Electronic methods (online banking bill pay and bank account number payments) account for \texttt{7} percent, while checks make up \texttt{7}percent. All other payments represent less than \texttt{5} percent of monthly transaction activity, with text and mobile payments barely registering at less than one half of one percent.
+
+\end{document}
+
